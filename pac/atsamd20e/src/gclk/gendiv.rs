@@ -34,12 +34,10 @@ impl From<crate::W<GENDIV_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `ID` reader - Generic Clock Generator Selection"]
-pub type ID_R = crate::FieldReader<IDSELECT_A>;
 #[doc = "Generic Clock Generator Selection\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
-pub enum IDSELECT_A {
+pub enum ID_A {
     #[doc = "0: Generic clock generator 0"]
     GCLK0 = 0,
     #[doc = "1: Generic clock generator 1"]
@@ -57,120 +55,166 @@ pub enum IDSELECT_A {
     #[doc = "7: Generic clock generator 7"]
     GCLK7 = 7,
 }
-impl From<IDSELECT_A> for u8 {
+impl From<ID_A> for u8 {
     #[inline(always)]
-    fn from(variant: IDSELECT_A) -> Self {
+    fn from(variant: ID_A) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDSELECT_A {
-    type Ux = u8;
-}
+#[doc = "Field `ID` reader - Generic Clock Generator Selection"]
+pub struct ID_R(crate::FieldReader<u8, ID_A>);
 impl ID_R {
-    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<IDSELECT_A> {
+    pub(crate) fn new(bits: u8) -> Self {
+        ID_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<ID_A> {
         match self.bits {
-            0 => Some(IDSELECT_A::GCLK0),
-            1 => Some(IDSELECT_A::GCLK1),
-            2 => Some(IDSELECT_A::GCLK2),
-            3 => Some(IDSELECT_A::GCLK3),
-            4 => Some(IDSELECT_A::GCLK4),
-            5 => Some(IDSELECT_A::GCLK5),
-            6 => Some(IDSELECT_A::GCLK6),
-            7 => Some(IDSELECT_A::GCLK7),
+            0 => Some(ID_A::GCLK0),
+            1 => Some(ID_A::GCLK1),
+            2 => Some(ID_A::GCLK2),
+            3 => Some(ID_A::GCLK3),
+            4 => Some(ID_A::GCLK4),
+            5 => Some(ID_A::GCLK5),
+            6 => Some(ID_A::GCLK6),
+            7 => Some(ID_A::GCLK7),
             _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `GCLK0`"]
     #[inline(always)]
     pub fn is_gclk0(&self) -> bool {
-        *self == IDSELECT_A::GCLK0
+        **self == ID_A::GCLK0
     }
     #[doc = "Checks if the value of the field is `GCLK1`"]
     #[inline(always)]
     pub fn is_gclk1(&self) -> bool {
-        *self == IDSELECT_A::GCLK1
+        **self == ID_A::GCLK1
     }
     #[doc = "Checks if the value of the field is `GCLK2`"]
     #[inline(always)]
     pub fn is_gclk2(&self) -> bool {
-        *self == IDSELECT_A::GCLK2
+        **self == ID_A::GCLK2
     }
     #[doc = "Checks if the value of the field is `GCLK3`"]
     #[inline(always)]
     pub fn is_gclk3(&self) -> bool {
-        *self == IDSELECT_A::GCLK3
+        **self == ID_A::GCLK3
     }
     #[doc = "Checks if the value of the field is `GCLK4`"]
     #[inline(always)]
     pub fn is_gclk4(&self) -> bool {
-        *self == IDSELECT_A::GCLK4
+        **self == ID_A::GCLK4
     }
     #[doc = "Checks if the value of the field is `GCLK5`"]
     #[inline(always)]
     pub fn is_gclk5(&self) -> bool {
-        *self == IDSELECT_A::GCLK5
+        **self == ID_A::GCLK5
     }
     #[doc = "Checks if the value of the field is `GCLK6`"]
     #[inline(always)]
     pub fn is_gclk6(&self) -> bool {
-        *self == IDSELECT_A::GCLK6
+        **self == ID_A::GCLK6
     }
     #[doc = "Checks if the value of the field is `GCLK7`"]
     #[inline(always)]
     pub fn is_gclk7(&self) -> bool {
-        *self == IDSELECT_A::GCLK7
+        **self == ID_A::GCLK7
+    }
+}
+impl core::ops::Deref for ID_R {
+    type Target = crate::FieldReader<u8, ID_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Field `ID` writer - Generic Clock Generator Selection"]
-pub type ID_W<'a, const O: u8> = crate::FieldWriter<'a, GENDIV_SPEC, 4, O, IDSELECT_A>;
-impl<'a, const O: u8> ID_W<'a, O> {
+pub struct ID_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ID_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: ID_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
     #[doc = "Generic clock generator 0"]
     #[inline(always)]
     pub fn gclk0(self) -> &'a mut W {
-        self.variant(IDSELECT_A::GCLK0)
+        self.variant(ID_A::GCLK0)
     }
     #[doc = "Generic clock generator 1"]
     #[inline(always)]
     pub fn gclk1(self) -> &'a mut W {
-        self.variant(IDSELECT_A::GCLK1)
+        self.variant(ID_A::GCLK1)
     }
     #[doc = "Generic clock generator 2"]
     #[inline(always)]
     pub fn gclk2(self) -> &'a mut W {
-        self.variant(IDSELECT_A::GCLK2)
+        self.variant(ID_A::GCLK2)
     }
     #[doc = "Generic clock generator 3"]
     #[inline(always)]
     pub fn gclk3(self) -> &'a mut W {
-        self.variant(IDSELECT_A::GCLK3)
+        self.variant(ID_A::GCLK3)
     }
     #[doc = "Generic clock generator 4"]
     #[inline(always)]
     pub fn gclk4(self) -> &'a mut W {
-        self.variant(IDSELECT_A::GCLK4)
+        self.variant(ID_A::GCLK4)
     }
     #[doc = "Generic clock generator 5"]
     #[inline(always)]
     pub fn gclk5(self) -> &'a mut W {
-        self.variant(IDSELECT_A::GCLK5)
+        self.variant(ID_A::GCLK5)
     }
     #[doc = "Generic clock generator 6"]
     #[inline(always)]
     pub fn gclk6(self) -> &'a mut W {
-        self.variant(IDSELECT_A::GCLK6)
+        self.variant(ID_A::GCLK6)
     }
     #[doc = "Generic clock generator 7"]
     #[inline(always)]
     pub fn gclk7(self) -> &'a mut W {
-        self.variant(IDSELECT_A::GCLK7)
+        self.variant(ID_A::GCLK7)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x0f) | (value as u32 & 0x0f);
+        self.w
     }
 }
 #[doc = "Field `DIV` reader - Division Factor"]
-pub type DIV_R = crate::FieldReader<u16>;
+pub struct DIV_R(crate::FieldReader<u16, u16>);
+impl DIV_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u16) -> Self {
+        DIV_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIV_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `DIV` writer - Division Factor"]
-pub type DIV_W<'a, const O: u8> = crate::FieldWriter<'a, GENDIV_SPEC, 16, O, u16>;
+pub struct DIV_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> DIV_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0xffff << 8)) | ((value as u32 & 0xffff) << 8);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:3 - Generic Clock Generator Selection"]
     #[inline(always)]
@@ -186,15 +230,13 @@ impl R {
 impl W {
     #[doc = "Bits 0:3 - Generic Clock Generator Selection"]
     #[inline(always)]
-    #[must_use]
-    pub fn id(&mut self) -> ID_W<0> {
-        ID_W::new(self)
+    pub fn id(&mut self) -> ID_W {
+        ID_W { w: self }
     }
     #[doc = "Bits 8:23 - Division Factor"]
     #[inline(always)]
-    #[must_use]
-    pub fn div(&mut self) -> DIV_W<8> {
-        DIV_W::new(self)
+    pub fn div(&mut self) -> DIV_W {
+        DIV_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -215,10 +257,11 @@ impl crate::Readable for GENDIV_SPEC {
 #[doc = "`write(|w| ..)` method takes [gendiv::W](W) writer structure"]
 impl crate::Writable for GENDIV_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets GENDIV to value 0"]
 impl crate::Resettable for GENDIV_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

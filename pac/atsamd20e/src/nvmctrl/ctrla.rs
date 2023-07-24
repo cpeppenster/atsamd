@@ -34,12 +34,10 @@ impl From<crate::W<CTRLA_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `CMD` reader - Command"]
-pub type CMD_R = crate::FieldReader<CMDSELECT_A>;
 #[doc = "Command\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
-pub enum CMDSELECT_A {
+pub enum CMD_A {
     #[doc = "2: Erase Row - Erases the row addressed by the ADDR register."]
     ER = 2,
     #[doc = "4: Write Page - Writes the contents of the page buffer to the page addressed by the ADDR register."]
@@ -67,211 +65,255 @@ pub enum CMDSELECT_A {
     #[doc = "70: Invalidate all cache lines."]
     INVALL = 70,
 }
-impl From<CMDSELECT_A> for u8 {
+impl From<CMD_A> for u8 {
     #[inline(always)]
-    fn from(variant: CMDSELECT_A) -> Self {
+    fn from(variant: CMD_A) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CMDSELECT_A {
-    type Ux = u8;
-}
+#[doc = "Field `CMD` reader - Command"]
+pub struct CMD_R(crate::FieldReader<u8, CMD_A>);
 impl CMD_R {
-    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CMDSELECT_A> {
+    pub(crate) fn new(bits: u8) -> Self {
+        CMD_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<CMD_A> {
         match self.bits {
-            2 => Some(CMDSELECT_A::ER),
-            4 => Some(CMDSELECT_A::WP),
-            5 => Some(CMDSELECT_A::EAR),
-            6 => Some(CMDSELECT_A::WAP),
-            10 => Some(CMDSELECT_A::SF),
-            15 => Some(CMDSELECT_A::WL),
-            64 => Some(CMDSELECT_A::LR),
-            65 => Some(CMDSELECT_A::UR),
-            66 => Some(CMDSELECT_A::SPRM),
-            67 => Some(CMDSELECT_A::CPRM),
-            68 => Some(CMDSELECT_A::PBC),
-            69 => Some(CMDSELECT_A::SSB),
-            70 => Some(CMDSELECT_A::INVALL),
+            2 => Some(CMD_A::ER),
+            4 => Some(CMD_A::WP),
+            5 => Some(CMD_A::EAR),
+            6 => Some(CMD_A::WAP),
+            10 => Some(CMD_A::SF),
+            15 => Some(CMD_A::WL),
+            64 => Some(CMD_A::LR),
+            65 => Some(CMD_A::UR),
+            66 => Some(CMD_A::SPRM),
+            67 => Some(CMD_A::CPRM),
+            68 => Some(CMD_A::PBC),
+            69 => Some(CMD_A::SSB),
+            70 => Some(CMD_A::INVALL),
             _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `ER`"]
     #[inline(always)]
     pub fn is_er(&self) -> bool {
-        *self == CMDSELECT_A::ER
+        **self == CMD_A::ER
     }
     #[doc = "Checks if the value of the field is `WP`"]
     #[inline(always)]
     pub fn is_wp(&self) -> bool {
-        *self == CMDSELECT_A::WP
+        **self == CMD_A::WP
     }
     #[doc = "Checks if the value of the field is `EAR`"]
     #[inline(always)]
     pub fn is_ear(&self) -> bool {
-        *self == CMDSELECT_A::EAR
+        **self == CMD_A::EAR
     }
     #[doc = "Checks if the value of the field is `WAP`"]
     #[inline(always)]
     pub fn is_wap(&self) -> bool {
-        *self == CMDSELECT_A::WAP
+        **self == CMD_A::WAP
     }
     #[doc = "Checks if the value of the field is `SF`"]
     #[inline(always)]
     pub fn is_sf(&self) -> bool {
-        *self == CMDSELECT_A::SF
+        **self == CMD_A::SF
     }
     #[doc = "Checks if the value of the field is `WL`"]
     #[inline(always)]
     pub fn is_wl(&self) -> bool {
-        *self == CMDSELECT_A::WL
+        **self == CMD_A::WL
     }
     #[doc = "Checks if the value of the field is `LR`"]
     #[inline(always)]
     pub fn is_lr(&self) -> bool {
-        *self == CMDSELECT_A::LR
+        **self == CMD_A::LR
     }
     #[doc = "Checks if the value of the field is `UR`"]
     #[inline(always)]
     pub fn is_ur(&self) -> bool {
-        *self == CMDSELECT_A::UR
+        **self == CMD_A::UR
     }
     #[doc = "Checks if the value of the field is `SPRM`"]
     #[inline(always)]
     pub fn is_sprm(&self) -> bool {
-        *self == CMDSELECT_A::SPRM
+        **self == CMD_A::SPRM
     }
     #[doc = "Checks if the value of the field is `CPRM`"]
     #[inline(always)]
     pub fn is_cprm(&self) -> bool {
-        *self == CMDSELECT_A::CPRM
+        **self == CMD_A::CPRM
     }
     #[doc = "Checks if the value of the field is `PBC`"]
     #[inline(always)]
     pub fn is_pbc(&self) -> bool {
-        *self == CMDSELECT_A::PBC
+        **self == CMD_A::PBC
     }
     #[doc = "Checks if the value of the field is `SSB`"]
     #[inline(always)]
     pub fn is_ssb(&self) -> bool {
-        *self == CMDSELECT_A::SSB
+        **self == CMD_A::SSB
     }
     #[doc = "Checks if the value of the field is `INVALL`"]
     #[inline(always)]
     pub fn is_invall(&self) -> bool {
-        *self == CMDSELECT_A::INVALL
+        **self == CMD_A::INVALL
+    }
+}
+impl core::ops::Deref for CMD_R {
+    type Target = crate::FieldReader<u8, CMD_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Field `CMD` writer - Command"]
-pub type CMD_W<'a, const O: u8> = crate::FieldWriter<'a, CTRLA_SPEC, 7, O, CMDSELECT_A>;
-impl<'a, const O: u8> CMD_W<'a, O> {
+pub struct CMD_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CMD_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: CMD_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
     #[doc = "Erase Row - Erases the row addressed by the ADDR register."]
     #[inline(always)]
     pub fn er(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::ER)
+        self.variant(CMD_A::ER)
     }
     #[doc = "Write Page - Writes the contents of the page buffer to the page addressed by the ADDR register."]
     #[inline(always)]
     pub fn wp(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::WP)
+        self.variant(CMD_A::WP)
     }
     #[doc = "Erase Auxiliary Row - Erases the auxiliary row addressed by the ADDR register. This command can be given only when the security bit is not set and only to the user configuration row."]
     #[inline(always)]
     pub fn ear(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::EAR)
+        self.variant(CMD_A::EAR)
     }
     #[doc = "Write Auxiliary Page - Writes the contents of the page buffer to the page addressed by the ADDR register. This command can be given only when the security bit is not set and only to the user configuration row."]
     #[inline(always)]
     pub fn wap(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::WAP)
+        self.variant(CMD_A::WAP)
     }
     #[doc = "Security Flow Command"]
     #[inline(always)]
     pub fn sf(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::SF)
+        self.variant(CMD_A::SF)
     }
     #[doc = "Write lockbits"]
     #[inline(always)]
     pub fn wl(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::WL)
+        self.variant(CMD_A::WL)
     }
     #[doc = "Lock Region - Locks the region containing the address location in the ADDR register."]
     #[inline(always)]
     pub fn lr(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::LR)
+        self.variant(CMD_A::LR)
     }
     #[doc = "Unlock Region - Unlocks the region containing the address location in the ADDR register."]
     #[inline(always)]
     pub fn ur(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::UR)
+        self.variant(CMD_A::UR)
     }
     #[doc = "Sets the power reduction mode."]
     #[inline(always)]
     pub fn sprm(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::SPRM)
+        self.variant(CMD_A::SPRM)
     }
     #[doc = "Clears the power reduction mode."]
     #[inline(always)]
     pub fn cprm(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::CPRM)
+        self.variant(CMD_A::CPRM)
     }
     #[doc = "Page Buffer Clear - Clears the page buffer."]
     #[inline(always)]
     pub fn pbc(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::PBC)
+        self.variant(CMD_A::PBC)
     }
     #[doc = "Set Security Bit - Sets the security bit by writing 0x00 to the first byte in the lockbit row."]
     #[inline(always)]
     pub fn ssb(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::SSB)
+        self.variant(CMD_A::SSB)
     }
     #[doc = "Invalidate all cache lines."]
     #[inline(always)]
     pub fn invall(self) -> &'a mut W {
-        self.variant(CMDSELECT_A::INVALL)
+        self.variant(CMD_A::INVALL)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x7f) | (value as u16 & 0x7f);
+        self.w
     }
 }
-#[doc = "Field `CMDEX` reader - Command Execution"]
-pub type CMDEX_R = crate::FieldReader<CMDEXSELECT_A>;
 #[doc = "Command Execution\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
-pub enum CMDEXSELECT_A {
+pub enum CMDEX_A {
     #[doc = "165: Execution Key"]
     KEY = 165,
 }
-impl From<CMDEXSELECT_A> for u8 {
+impl From<CMDEX_A> for u8 {
     #[inline(always)]
-    fn from(variant: CMDEXSELECT_A) -> Self {
+    fn from(variant: CMDEX_A) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for CMDEXSELECT_A {
-    type Ux = u8;
-}
+#[doc = "Field `CMDEX` reader - Command Execution"]
+pub struct CMDEX_R(crate::FieldReader<u8, CMDEX_A>);
 impl CMDEX_R {
-    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<CMDEXSELECT_A> {
+    pub(crate) fn new(bits: u8) -> Self {
+        CMDEX_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<CMDEX_A> {
         match self.bits {
-            165 => Some(CMDEXSELECT_A::KEY),
+            165 => Some(CMDEX_A::KEY),
             _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `KEY`"]
     #[inline(always)]
     pub fn is_key(&self) -> bool {
-        *self == CMDEXSELECT_A::KEY
+        **self == CMDEX_A::KEY
+    }
+}
+impl core::ops::Deref for CMDEX_R {
+    type Target = crate::FieldReader<u8, CMDEX_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Field `CMDEX` writer - Command Execution"]
-pub type CMDEX_W<'a, const O: u8> = crate::FieldWriter<'a, CTRLA_SPEC, 8, O, CMDEXSELECT_A>;
-impl<'a, const O: u8> CMDEX_W<'a, O> {
+pub struct CMDEX_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CMDEX_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: CMDEX_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
     #[doc = "Execution Key"]
     #[inline(always)]
     pub fn key(self) -> &'a mut W {
-        self.variant(CMDEXSELECT_A::KEY)
+        self.variant(CMDEX_A::KEY)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0xff << 8)) | ((value as u16 & 0xff) << 8);
+        self.w
     }
 }
 impl R {
@@ -289,15 +331,13 @@ impl R {
 impl W {
     #[doc = "Bits 0:6 - Command"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmd(&mut self) -> CMD_W<0> {
-        CMD_W::new(self)
+    pub fn cmd(&mut self) -> CMD_W {
+        CMD_W { w: self }
     }
     #[doc = "Bits 8:15 - Command Execution"]
     #[inline(always)]
-    #[must_use]
-    pub fn cmdex(&mut self) -> CMDEX_W<8> {
-        CMDEX_W::new(self)
+    pub fn cmdex(&mut self) -> CMDEX_W {
+        CMDEX_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -318,10 +358,11 @@ impl crate::Readable for CTRLA_SPEC {
 #[doc = "`write(|w| ..)` method takes [ctrla::W](W) writer structure"]
 impl crate::Writable for CTRLA_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets CTRLA to value 0"]
 impl crate::Resettable for CTRLA_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

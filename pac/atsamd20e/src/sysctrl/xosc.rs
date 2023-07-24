@@ -35,63 +35,274 @@ impl From<crate::W<XOSC_SPEC>> for W {
     }
 }
 #[doc = "Field `ENABLE` reader - Enable"]
-pub type ENABLE_R = crate::BitReader;
+pub struct ENABLE_R(crate::FieldReader<bool, bool>);
+impl ENABLE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        ENABLE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ENABLE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ENABLE` writer - Enable"]
-pub type ENABLE_W<'a, const O: u8> = crate::BitWriter<'a, XOSC_SPEC, O>;
+pub struct ENABLE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ENABLE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u16 & 0x01) << 1);
+        self.w
+    }
+}
 #[doc = "Field `XTALEN` reader - Crystal Oscillator Enable"]
-pub type XTALEN_R = crate::BitReader;
+pub struct XTALEN_R(crate::FieldReader<bool, bool>);
+impl XTALEN_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        XTALEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for XTALEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `XTALEN` writer - Crystal Oscillator Enable"]
-pub type XTALEN_W<'a, const O: u8> = crate::BitWriter<'a, XOSC_SPEC, O>;
+pub struct XTALEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> XTALEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u16 & 0x01) << 2);
+        self.w
+    }
+}
 #[doc = "Field `RUNSTDBY` reader - Run during Standby"]
-pub type RUNSTDBY_R = crate::BitReader;
+pub struct RUNSTDBY_R(crate::FieldReader<bool, bool>);
+impl RUNSTDBY_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        RUNSTDBY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RUNSTDBY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `RUNSTDBY` writer - Run during Standby"]
-pub type RUNSTDBY_W<'a, const O: u8> = crate::BitWriter<'a, XOSC_SPEC, O>;
+pub struct RUNSTDBY_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> RUNSTDBY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u16 & 0x01) << 6);
+        self.w
+    }
+}
 #[doc = "Field `ONDEMAND` reader - Enable on Demand"]
-pub type ONDEMAND_R = crate::BitReader;
+pub struct ONDEMAND_R(crate::FieldReader<bool, bool>);
+impl ONDEMAND_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        ONDEMAND_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ONDEMAND_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ONDEMAND` writer - Enable on Demand"]
-pub type ONDEMAND_W<'a, const O: u8> = crate::BitWriter<'a, XOSC_SPEC, O>;
+pub struct ONDEMAND_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ONDEMAND_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u16 & 0x01) << 7);
+        self.w
+    }
+}
 #[doc = "Field `GAIN` reader - Gain Value"]
-pub type GAIN_R = crate::FieldReader;
+pub struct GAIN_R(crate::FieldReader<u8, u8>);
+impl GAIN_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        GAIN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for GAIN_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `GAIN` writer - Gain Value"]
-pub type GAIN_W<'a, const O: u8> = crate::FieldWriter<'a, XOSC_SPEC, 3, O>;
+pub struct GAIN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> GAIN_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x07 << 8)) | ((value as u16 & 0x07) << 8);
+        self.w
+    }
+}
 #[doc = "Field `AMPGC` reader - Automatic Amplitude Gain Control"]
-pub type AMPGC_R = crate::BitReader;
+pub struct AMPGC_R(crate::FieldReader<bool, bool>);
+impl AMPGC_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        AMPGC_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for AMPGC_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `AMPGC` writer - Automatic Amplitude Gain Control"]
-pub type AMPGC_W<'a, const O: u8> = crate::BitWriter<'a, XOSC_SPEC, O>;
+pub struct AMPGC_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> AMPGC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u16 & 0x01) << 11);
+        self.w
+    }
+}
 #[doc = "Field `STARTUP` reader - Start-Up Time"]
-pub type STARTUP_R = crate::FieldReader;
+pub struct STARTUP_R(crate::FieldReader<u8, u8>);
+impl STARTUP_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        STARTUP_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for STARTUP_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `STARTUP` writer - Start-Up Time"]
-pub type STARTUP_W<'a, const O: u8> = crate::FieldWriter<'a, XOSC_SPEC, 4, O>;
+pub struct STARTUP_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> STARTUP_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x0f << 12)) | ((value as u16 & 0x0f) << 12);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 1 - Enable"]
     #[inline(always)]
     pub fn enable(&self) -> ENABLE_R {
-        ENABLE_R::new(((self.bits >> 1) & 1) != 0)
+        ENABLE_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Crystal Oscillator Enable"]
     #[inline(always)]
     pub fn xtalen(&self) -> XTALEN_R {
-        XTALEN_R::new(((self.bits >> 2) & 1) != 0)
+        XTALEN_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 6 - Run during Standby"]
     #[inline(always)]
     pub fn runstdby(&self) -> RUNSTDBY_R {
-        RUNSTDBY_R::new(((self.bits >> 6) & 1) != 0)
+        RUNSTDBY_R::new(((self.bits >> 6) & 0x01) != 0)
     }
     #[doc = "Bit 7 - Enable on Demand"]
     #[inline(always)]
     pub fn ondemand(&self) -> ONDEMAND_R {
-        ONDEMAND_R::new(((self.bits >> 7) & 1) != 0)
+        ONDEMAND_R::new(((self.bits >> 7) & 0x01) != 0)
     }
     #[doc = "Bits 8:10 - Gain Value"]
     #[inline(always)]
     pub fn gain(&self) -> GAIN_R {
-        GAIN_R::new(((self.bits >> 8) & 7) as u8)
+        GAIN_R::new(((self.bits >> 8) & 0x07) as u8)
     }
     #[doc = "Bit 11 - Automatic Amplitude Gain Control"]
     #[inline(always)]
     pub fn ampgc(&self) -> AMPGC_R {
-        AMPGC_R::new(((self.bits >> 11) & 1) != 0)
+        AMPGC_R::new(((self.bits >> 11) & 0x01) != 0)
     }
     #[doc = "Bits 12:15 - Start-Up Time"]
     #[inline(always)]
@@ -102,45 +313,38 @@ impl R {
 impl W {
     #[doc = "Bit 1 - Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn enable(&mut self) -> ENABLE_W<1> {
-        ENABLE_W::new(self)
+    pub fn enable(&mut self) -> ENABLE_W {
+        ENABLE_W { w: self }
     }
     #[doc = "Bit 2 - Crystal Oscillator Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn xtalen(&mut self) -> XTALEN_W<2> {
-        XTALEN_W::new(self)
+    pub fn xtalen(&mut self) -> XTALEN_W {
+        XTALEN_W { w: self }
     }
     #[doc = "Bit 6 - Run during Standby"]
     #[inline(always)]
-    #[must_use]
-    pub fn runstdby(&mut self) -> RUNSTDBY_W<6> {
-        RUNSTDBY_W::new(self)
+    pub fn runstdby(&mut self) -> RUNSTDBY_W {
+        RUNSTDBY_W { w: self }
     }
     #[doc = "Bit 7 - Enable on Demand"]
     #[inline(always)]
-    #[must_use]
-    pub fn ondemand(&mut self) -> ONDEMAND_W<7> {
-        ONDEMAND_W::new(self)
+    pub fn ondemand(&mut self) -> ONDEMAND_W {
+        ONDEMAND_W { w: self }
     }
     #[doc = "Bits 8:10 - Gain Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn gain(&mut self) -> GAIN_W<8> {
-        GAIN_W::new(self)
+    pub fn gain(&mut self) -> GAIN_W {
+        GAIN_W { w: self }
     }
     #[doc = "Bit 11 - Automatic Amplitude Gain Control"]
     #[inline(always)]
-    #[must_use]
-    pub fn ampgc(&mut self) -> AMPGC_W<11> {
-        AMPGC_W::new(self)
+    pub fn ampgc(&mut self) -> AMPGC_W {
+        AMPGC_W { w: self }
     }
     #[doc = "Bits 12:15 - Start-Up Time"]
     #[inline(always)]
-    #[must_use]
-    pub fn startup(&mut self) -> STARTUP_W<12> {
-        STARTUP_W::new(self)
+    pub fn startup(&mut self) -> STARTUP_W {
+        STARTUP_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -161,10 +365,11 @@ impl crate::Readable for XOSC_SPEC {
 #[doc = "`write(|w| ..)` method takes [xosc::W](W) writer structure"]
 impl crate::Writable for XOSC_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets XOSC to value 0x80"]
 impl crate::Resettable for XOSC_SPEC {
-    const RESET_VALUE: Self::Ux = 0x80;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x80
+    }
 }

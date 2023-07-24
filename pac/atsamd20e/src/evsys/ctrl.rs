@@ -20,21 +20,59 @@ impl From<crate::W<CTRL_SPEC>> for W {
     }
 }
 #[doc = "Field `SWRST` writer - Software Reset"]
-pub type SWRST_W<'a, const O: u8> = crate::BitWriter<'a, CTRL_SPEC, O>;
+pub struct SWRST_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> SWRST_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | (value as u8 & 0x01);
+        self.w
+    }
+}
 #[doc = "Field `GCLKREQ` writer - Generic Clock Requests"]
-pub type GCLKREQ_W<'a, const O: u8> = crate::BitWriter<'a, CTRL_SPEC, O>;
+pub struct GCLKREQ_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> GCLKREQ_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u8 & 0x01) << 4);
+        self.w
+    }
+}
 impl W {
     #[doc = "Bit 0 - Software Reset"]
     #[inline(always)]
-    #[must_use]
-    pub fn swrst(&mut self) -> SWRST_W<0> {
-        SWRST_W::new(self)
+    pub fn swrst(&mut self) -> SWRST_W {
+        SWRST_W { w: self }
     }
     #[doc = "Bit 4 - Generic Clock Requests"]
     #[inline(always)]
-    #[must_use]
-    pub fn gclkreq(&mut self) -> GCLKREQ_W<4> {
-        GCLKREQ_W::new(self)
+    pub fn gclkreq(&mut self) -> GCLKREQ_W {
+        GCLKREQ_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -51,10 +89,11 @@ impl crate::RegisterSpec for CTRL_SPEC {
 #[doc = "`write(|w| ..)` method takes [ctrl::W](W) writer structure"]
 impl crate::Writable for CTRL_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets CTRL to value 0"]
 impl crate::Resettable for CTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

@@ -35,247 +35,759 @@ impl From<crate::W<INTENSET_SPEC>> for W {
     }
 }
 #[doc = "Field `OVR0` reader - Channel 0 Overrun Interrupt Enable"]
-pub type OVR0_R = crate::BitReader;
+pub struct OVR0_R(crate::FieldReader<bool, bool>);
+impl OVR0_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        OVR0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVR0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `OVR0` writer - Channel 0 Overrun Interrupt Enable"]
-pub type OVR0_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct OVR0_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> OVR0_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
+        self.w
+    }
+}
 #[doc = "Field `OVR1` reader - Channel 1 Overrun Interrupt Enable"]
-pub type OVR1_R = crate::BitReader;
+pub struct OVR1_R(crate::FieldReader<bool, bool>);
+impl OVR1_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        OVR1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVR1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `OVR1` writer - Channel 1 Overrun Interrupt Enable"]
-pub type OVR1_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct OVR1_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> OVR1_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
+        self.w
+    }
+}
 #[doc = "Field `OVR2` reader - Channel 2 Overrun Interrupt Enable"]
-pub type OVR2_R = crate::BitReader;
+pub struct OVR2_R(crate::FieldReader<bool, bool>);
+impl OVR2_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        OVR2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVR2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `OVR2` writer - Channel 2 Overrun Interrupt Enable"]
-pub type OVR2_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct OVR2_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> OVR2_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
+        self.w
+    }
+}
 #[doc = "Field `OVR3` reader - Channel 3 Overrun Interrupt Enable"]
-pub type OVR3_R = crate::BitReader;
+pub struct OVR3_R(crate::FieldReader<bool, bool>);
+impl OVR3_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        OVR3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVR3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `OVR3` writer - Channel 3 Overrun Interrupt Enable"]
-pub type OVR3_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct OVR3_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> OVR3_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u32 & 0x01) << 3);
+        self.w
+    }
+}
 #[doc = "Field `OVR4` reader - Channel 4 Overrun Interrupt Enable"]
-pub type OVR4_R = crate::BitReader;
+pub struct OVR4_R(crate::FieldReader<bool, bool>);
+impl OVR4_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        OVR4_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVR4_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `OVR4` writer - Channel 4 Overrun Interrupt Enable"]
-pub type OVR4_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct OVR4_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> OVR4_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u32 & 0x01) << 4);
+        self.w
+    }
+}
 #[doc = "Field `OVR5` reader - Channel 5 Overrun Interrupt Enable"]
-pub type OVR5_R = crate::BitReader;
+pub struct OVR5_R(crate::FieldReader<bool, bool>);
+impl OVR5_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        OVR5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVR5_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `OVR5` writer - Channel 5 Overrun Interrupt Enable"]
-pub type OVR5_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct OVR5_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> OVR5_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 5)) | ((value as u32 & 0x01) << 5);
+        self.w
+    }
+}
 #[doc = "Field `OVR6` reader - Channel 6 Overrun Interrupt Enable"]
-pub type OVR6_R = crate::BitReader;
+pub struct OVR6_R(crate::FieldReader<bool, bool>);
+impl OVR6_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        OVR6_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVR6_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `OVR6` writer - Channel 6 Overrun Interrupt Enable"]
-pub type OVR6_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct OVR6_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> OVR6_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
+        self.w
+    }
+}
 #[doc = "Field `OVR7` reader - Channel 7 Overrun Interrupt Enable"]
-pub type OVR7_R = crate::BitReader;
+pub struct OVR7_R(crate::FieldReader<bool, bool>);
+impl OVR7_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        OVR7_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for OVR7_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `OVR7` writer - Channel 7 Overrun Interrupt Enable"]
-pub type OVR7_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct OVR7_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> OVR7_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
+        self.w
+    }
+}
 #[doc = "Field `EVD0` reader - Channel 0 Event Detection Interrupt Enable"]
-pub type EVD0_R = crate::BitReader;
+pub struct EVD0_R(crate::FieldReader<bool, bool>);
+impl EVD0_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        EVD0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EVD0_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `EVD0` writer - Channel 0 Event Detection Interrupt Enable"]
-pub type EVD0_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct EVD0_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> EVD0_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u32 & 0x01) << 8);
+        self.w
+    }
+}
 #[doc = "Field `EVD1` reader - Channel 1 Event Detection Interrupt Enable"]
-pub type EVD1_R = crate::BitReader;
+pub struct EVD1_R(crate::FieldReader<bool, bool>);
+impl EVD1_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        EVD1_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EVD1_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `EVD1` writer - Channel 1 Event Detection Interrupt Enable"]
-pub type EVD1_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct EVD1_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> EVD1_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u32 & 0x01) << 9);
+        self.w
+    }
+}
 #[doc = "Field `EVD2` reader - Channel 2 Event Detection Interrupt Enable"]
-pub type EVD2_R = crate::BitReader;
+pub struct EVD2_R(crate::FieldReader<bool, bool>);
+impl EVD2_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        EVD2_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EVD2_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `EVD2` writer - Channel 2 Event Detection Interrupt Enable"]
-pub type EVD2_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct EVD2_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> EVD2_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 10)) | ((value as u32 & 0x01) << 10);
+        self.w
+    }
+}
 #[doc = "Field `EVD3` reader - Channel 3 Event Detection Interrupt Enable"]
-pub type EVD3_R = crate::BitReader;
+pub struct EVD3_R(crate::FieldReader<bool, bool>);
+impl EVD3_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        EVD3_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EVD3_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `EVD3` writer - Channel 3 Event Detection Interrupt Enable"]
-pub type EVD3_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct EVD3_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> EVD3_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 11)) | ((value as u32 & 0x01) << 11);
+        self.w
+    }
+}
 #[doc = "Field `EVD4` reader - Channel 4 Event Detection Interrupt Enable"]
-pub type EVD4_R = crate::BitReader;
+pub struct EVD4_R(crate::FieldReader<bool, bool>);
+impl EVD4_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        EVD4_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EVD4_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `EVD4` writer - Channel 4 Event Detection Interrupt Enable"]
-pub type EVD4_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct EVD4_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> EVD4_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 12)) | ((value as u32 & 0x01) << 12);
+        self.w
+    }
+}
 #[doc = "Field `EVD5` reader - Channel 5 Event Detection Interrupt Enable"]
-pub type EVD5_R = crate::BitReader;
+pub struct EVD5_R(crate::FieldReader<bool, bool>);
+impl EVD5_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        EVD5_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EVD5_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `EVD5` writer - Channel 5 Event Detection Interrupt Enable"]
-pub type EVD5_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct EVD5_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> EVD5_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 13)) | ((value as u32 & 0x01) << 13);
+        self.w
+    }
+}
 #[doc = "Field `EVD6` reader - Channel 6 Event Detection Interrupt Enable"]
-pub type EVD6_R = crate::BitReader;
+pub struct EVD6_R(crate::FieldReader<bool, bool>);
+impl EVD6_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        EVD6_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EVD6_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `EVD6` writer - Channel 6 Event Detection Interrupt Enable"]
-pub type EVD6_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct EVD6_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> EVD6_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 14)) | ((value as u32 & 0x01) << 14);
+        self.w
+    }
+}
 #[doc = "Field `EVD7` reader - Channel 7 Event Detection Interrupt Enable"]
-pub type EVD7_R = crate::BitReader;
+pub struct EVD7_R(crate::FieldReader<bool, bool>);
+impl EVD7_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        EVD7_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for EVD7_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `EVD7` writer - Channel 7 Event Detection Interrupt Enable"]
-pub type EVD7_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct EVD7_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> EVD7_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 15)) | ((value as u32 & 0x01) << 15);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 0 - Channel 0 Overrun Interrupt Enable"]
     #[inline(always)]
     pub fn ovr0(&self) -> OVR0_R {
-        OVR0_R::new((self.bits & 1) != 0)
+        OVR0_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Channel 1 Overrun Interrupt Enable"]
     #[inline(always)]
     pub fn ovr1(&self) -> OVR1_R {
-        OVR1_R::new(((self.bits >> 1) & 1) != 0)
+        OVR1_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Channel 2 Overrun Interrupt Enable"]
     #[inline(always)]
     pub fn ovr2(&self) -> OVR2_R {
-        OVR2_R::new(((self.bits >> 2) & 1) != 0)
+        OVR2_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3 - Channel 3 Overrun Interrupt Enable"]
     #[inline(always)]
     pub fn ovr3(&self) -> OVR3_R {
-        OVR3_R::new(((self.bits >> 3) & 1) != 0)
+        OVR3_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4 - Channel 4 Overrun Interrupt Enable"]
     #[inline(always)]
     pub fn ovr4(&self) -> OVR4_R {
-        OVR4_R::new(((self.bits >> 4) & 1) != 0)
+        OVR4_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 5 - Channel 5 Overrun Interrupt Enable"]
     #[inline(always)]
     pub fn ovr5(&self) -> OVR5_R {
-        OVR5_R::new(((self.bits >> 5) & 1) != 0)
+        OVR5_R::new(((self.bits >> 5) & 0x01) != 0)
     }
     #[doc = "Bit 6 - Channel 6 Overrun Interrupt Enable"]
     #[inline(always)]
     pub fn ovr6(&self) -> OVR6_R {
-        OVR6_R::new(((self.bits >> 6) & 1) != 0)
+        OVR6_R::new(((self.bits >> 6) & 0x01) != 0)
     }
     #[doc = "Bit 7 - Channel 7 Overrun Interrupt Enable"]
     #[inline(always)]
     pub fn ovr7(&self) -> OVR7_R {
-        OVR7_R::new(((self.bits >> 7) & 1) != 0)
+        OVR7_R::new(((self.bits >> 7) & 0x01) != 0)
     }
     #[doc = "Bit 8 - Channel 0 Event Detection Interrupt Enable"]
     #[inline(always)]
     pub fn evd0(&self) -> EVD0_R {
-        EVD0_R::new(((self.bits >> 8) & 1) != 0)
+        EVD0_R::new(((self.bits >> 8) & 0x01) != 0)
     }
     #[doc = "Bit 9 - Channel 1 Event Detection Interrupt Enable"]
     #[inline(always)]
     pub fn evd1(&self) -> EVD1_R {
-        EVD1_R::new(((self.bits >> 9) & 1) != 0)
+        EVD1_R::new(((self.bits >> 9) & 0x01) != 0)
     }
     #[doc = "Bit 10 - Channel 2 Event Detection Interrupt Enable"]
     #[inline(always)]
     pub fn evd2(&self) -> EVD2_R {
-        EVD2_R::new(((self.bits >> 10) & 1) != 0)
+        EVD2_R::new(((self.bits >> 10) & 0x01) != 0)
     }
     #[doc = "Bit 11 - Channel 3 Event Detection Interrupt Enable"]
     #[inline(always)]
     pub fn evd3(&self) -> EVD3_R {
-        EVD3_R::new(((self.bits >> 11) & 1) != 0)
+        EVD3_R::new(((self.bits >> 11) & 0x01) != 0)
     }
     #[doc = "Bit 12 - Channel 4 Event Detection Interrupt Enable"]
     #[inline(always)]
     pub fn evd4(&self) -> EVD4_R {
-        EVD4_R::new(((self.bits >> 12) & 1) != 0)
+        EVD4_R::new(((self.bits >> 12) & 0x01) != 0)
     }
     #[doc = "Bit 13 - Channel 5 Event Detection Interrupt Enable"]
     #[inline(always)]
     pub fn evd5(&self) -> EVD5_R {
-        EVD5_R::new(((self.bits >> 13) & 1) != 0)
+        EVD5_R::new(((self.bits >> 13) & 0x01) != 0)
     }
     #[doc = "Bit 14 - Channel 6 Event Detection Interrupt Enable"]
     #[inline(always)]
     pub fn evd6(&self) -> EVD6_R {
-        EVD6_R::new(((self.bits >> 14) & 1) != 0)
+        EVD6_R::new(((self.bits >> 14) & 0x01) != 0)
     }
     #[doc = "Bit 15 - Channel 7 Event Detection Interrupt Enable"]
     #[inline(always)]
     pub fn evd7(&self) -> EVD7_R {
-        EVD7_R::new(((self.bits >> 15) & 1) != 0)
+        EVD7_R::new(((self.bits >> 15) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Channel 0 Overrun Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ovr0(&mut self) -> OVR0_W<0> {
-        OVR0_W::new(self)
+    pub fn ovr0(&mut self) -> OVR0_W {
+        OVR0_W { w: self }
     }
     #[doc = "Bit 1 - Channel 1 Overrun Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ovr1(&mut self) -> OVR1_W<1> {
-        OVR1_W::new(self)
+    pub fn ovr1(&mut self) -> OVR1_W {
+        OVR1_W { w: self }
     }
     #[doc = "Bit 2 - Channel 2 Overrun Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ovr2(&mut self) -> OVR2_W<2> {
-        OVR2_W::new(self)
+    pub fn ovr2(&mut self) -> OVR2_W {
+        OVR2_W { w: self }
     }
     #[doc = "Bit 3 - Channel 3 Overrun Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ovr3(&mut self) -> OVR3_W<3> {
-        OVR3_W::new(self)
+    pub fn ovr3(&mut self) -> OVR3_W {
+        OVR3_W { w: self }
     }
     #[doc = "Bit 4 - Channel 4 Overrun Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ovr4(&mut self) -> OVR4_W<4> {
-        OVR4_W::new(self)
+    pub fn ovr4(&mut self) -> OVR4_W {
+        OVR4_W { w: self }
     }
     #[doc = "Bit 5 - Channel 5 Overrun Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ovr5(&mut self) -> OVR5_W<5> {
-        OVR5_W::new(self)
+    pub fn ovr5(&mut self) -> OVR5_W {
+        OVR5_W { w: self }
     }
     #[doc = "Bit 6 - Channel 6 Overrun Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ovr6(&mut self) -> OVR6_W<6> {
-        OVR6_W::new(self)
+    pub fn ovr6(&mut self) -> OVR6_W {
+        OVR6_W { w: self }
     }
     #[doc = "Bit 7 - Channel 7 Overrun Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ovr7(&mut self) -> OVR7_W<7> {
-        OVR7_W::new(self)
+    pub fn ovr7(&mut self) -> OVR7_W {
+        OVR7_W { w: self }
     }
     #[doc = "Bit 8 - Channel 0 Event Detection Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn evd0(&mut self) -> EVD0_W<8> {
-        EVD0_W::new(self)
+    pub fn evd0(&mut self) -> EVD0_W {
+        EVD0_W { w: self }
     }
     #[doc = "Bit 9 - Channel 1 Event Detection Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn evd1(&mut self) -> EVD1_W<9> {
-        EVD1_W::new(self)
+    pub fn evd1(&mut self) -> EVD1_W {
+        EVD1_W { w: self }
     }
     #[doc = "Bit 10 - Channel 2 Event Detection Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn evd2(&mut self) -> EVD2_W<10> {
-        EVD2_W::new(self)
+    pub fn evd2(&mut self) -> EVD2_W {
+        EVD2_W { w: self }
     }
     #[doc = "Bit 11 - Channel 3 Event Detection Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn evd3(&mut self) -> EVD3_W<11> {
-        EVD3_W::new(self)
+    pub fn evd3(&mut self) -> EVD3_W {
+        EVD3_W { w: self }
     }
     #[doc = "Bit 12 - Channel 4 Event Detection Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn evd4(&mut self) -> EVD4_W<12> {
-        EVD4_W::new(self)
+    pub fn evd4(&mut self) -> EVD4_W {
+        EVD4_W { w: self }
     }
     #[doc = "Bit 13 - Channel 5 Event Detection Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn evd5(&mut self) -> EVD5_W<13> {
-        EVD5_W::new(self)
+    pub fn evd5(&mut self) -> EVD5_W {
+        EVD5_W { w: self }
     }
     #[doc = "Bit 14 - Channel 6 Event Detection Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn evd6(&mut self) -> EVD6_W<14> {
-        EVD6_W::new(self)
+    pub fn evd6(&mut self) -> EVD6_W {
+        EVD6_W { w: self }
     }
     #[doc = "Bit 15 - Channel 7 Event Detection Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn evd7(&mut self) -> EVD7_W<15> {
-        EVD7_W::new(self)
+    pub fn evd7(&mut self) -> EVD7_W {
+        EVD7_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -296,10 +808,11 @@ impl crate::Readable for INTENSET_SPEC {
 #[doc = "`write(|w| ..)` method takes [intenset::W](W) writer structure"]
 impl crate::Writable for INTENSET_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets INTENSET to value 0"]
 impl crate::Resettable for INTENSET_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

@@ -35,37 +35,81 @@ impl From<crate::W<ADDR_SPEC>> for W {
     }
 }
 #[doc = "Field `AMOD` reader - Access Mode"]
-pub type AMOD_R = crate::FieldReader;
+pub struct AMOD_R(crate::FieldReader<u8, u8>);
+impl AMOD_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        AMOD_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for AMOD_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `AMOD` writer - Access Mode"]
-pub type AMOD_W<'a, const O: u8> = crate::FieldWriter<'a, ADDR_SPEC, 2, O>;
+pub struct AMOD_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> AMOD_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x03) | (value as u32 & 0x03);
+        self.w
+    }
+}
 #[doc = "Field `ADDR` reader - Address"]
-pub type ADDR_R = crate::FieldReader<u32>;
+pub struct ADDR_R(crate::FieldReader<u32, u32>);
+impl ADDR_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u32) -> Self {
+        ADDR_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ADDR_R {
+    type Target = crate::FieldReader<u32, u32>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ADDR` writer - Address"]
-pub type ADDR_W<'a, const O: u8> = crate::FieldWriter<'a, ADDR_SPEC, 30, O, u32>;
+pub struct ADDR_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ADDR_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u32) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x3fff_ffff << 2)) | ((value as u32 & 0x3fff_ffff) << 2);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:1 - Access Mode"]
     #[inline(always)]
     pub fn amod(&self) -> AMOD_R {
-        AMOD_R::new((self.bits & 3) as u8)
+        AMOD_R::new((self.bits & 0x03) as u8)
     }
     #[doc = "Bits 2:31 - Address"]
     #[inline(always)]
     pub fn addr(&self) -> ADDR_R {
-        ADDR_R::new((self.bits >> 2) & 0x3fff_ffff)
+        ADDR_R::new(((self.bits >> 2) & 0x3fff_ffff) as u32)
     }
 }
 impl W {
     #[doc = "Bits 0:1 - Access Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn amod(&mut self) -> AMOD_W<0> {
-        AMOD_W::new(self)
+    pub fn amod(&mut self) -> AMOD_W {
+        AMOD_W { w: self }
     }
     #[doc = "Bits 2:31 - Address"]
     #[inline(always)]
-    #[must_use]
-    pub fn addr(&mut self) -> ADDR_W<2> {
-        ADDR_W::new(self)
+    pub fn addr(&mut self) -> ADDR_W {
+        ADDR_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -86,10 +130,11 @@ impl crate::Readable for ADDR_SPEC {
 #[doc = "`write(|w| ..)` method takes [addr::W](W) writer structure"]
 impl crate::Writable for ADDR_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets ADDR to value 0"]
 impl crate::Resettable for ADDR_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

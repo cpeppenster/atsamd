@@ -35,44 +35,121 @@ impl From<crate::W<INTFLAG_SPEC>> for W {
     }
 }
 #[doc = "Field `DRE` reader - Data Register Empty"]
-pub type DRE_R = crate::BitReader;
+pub struct DRE_R(crate::FieldReader<bool, bool>);
+impl DRE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        DRE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DRE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `TXC` reader - Transmit Complete"]
-pub type TXC_R = crate::BitReader;
+pub struct TXC_R(crate::FieldReader<bool, bool>);
+impl TXC_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        TXC_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TXC_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `TXC` writer - Transmit Complete"]
-pub type TXC_W<'a, const O: u8> = crate::BitWriter<'a, INTFLAG_SPEC, O>;
+pub struct TXC_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> TXC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u8 & 0x01) << 1);
+        self.w
+    }
+}
 #[doc = "Field `RXC` reader - Receive Complete"]
-pub type RXC_R = crate::BitReader;
+pub struct RXC_R(crate::FieldReader<bool, bool>);
+impl RXC_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        RXC_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RXC_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `RXS` writer - Receive Start Interrupt"]
-pub type RXS_W<'a, const O: u8> = crate::BitWriter<'a, INTFLAG_SPEC, O>;
+pub struct RXS_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> RXS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u8 & 0x01) << 3);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 0 - Data Register Empty"]
     #[inline(always)]
     pub fn dre(&self) -> DRE_R {
-        DRE_R::new((self.bits & 1) != 0)
+        DRE_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Transmit Complete"]
     #[inline(always)]
     pub fn txc(&self) -> TXC_R {
-        TXC_R::new(((self.bits >> 1) & 1) != 0)
+        TXC_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Receive Complete"]
     #[inline(always)]
     pub fn rxc(&self) -> RXC_R {
-        RXC_R::new(((self.bits >> 2) & 1) != 0)
+        RXC_R::new(((self.bits >> 2) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bit 1 - Transmit Complete"]
     #[inline(always)]
-    #[must_use]
-    pub fn txc(&mut self) -> TXC_W<1> {
-        TXC_W::new(self)
+    pub fn txc(&mut self) -> TXC_W {
+        TXC_W { w: self }
     }
     #[doc = "Bit 3 - Receive Start Interrupt"]
     #[inline(always)]
-    #[must_use]
-    pub fn rxs(&mut self) -> RXS_W<3> {
-        RXS_W::new(self)
+    pub fn rxs(&mut self) -> RXS_W {
+        RXS_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -93,10 +170,11 @@ impl crate::Readable for INTFLAG_SPEC {
 #[doc = "`write(|w| ..)` method takes [intflag::W](W) writer structure"]
 impl crate::Writable for INTFLAG_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets INTFLAG to value 0"]
 impl crate::Resettable for INTFLAG_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

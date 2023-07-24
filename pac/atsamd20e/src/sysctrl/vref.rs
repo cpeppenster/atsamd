@@ -35,27 +35,116 @@ impl From<crate::W<VREF_SPEC>> for W {
     }
 }
 #[doc = "Field `TSEN` reader - Temperature Sensor Output Enable"]
-pub type TSEN_R = crate::BitReader;
+pub struct TSEN_R(crate::FieldReader<bool, bool>);
+impl TSEN_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        TSEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for TSEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `TSEN` writer - Temperature Sensor Output Enable"]
-pub type TSEN_W<'a, const O: u8> = crate::BitWriter<'a, VREF_SPEC, O>;
+pub struct TSEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> TSEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
+        self.w
+    }
+}
 #[doc = "Field `BGOUTEN` reader - Bandgap Output Enable"]
-pub type BGOUTEN_R = crate::BitReader;
+pub struct BGOUTEN_R(crate::FieldReader<bool, bool>);
+impl BGOUTEN_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        BGOUTEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BGOUTEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `BGOUTEN` writer - Bandgap Output Enable"]
-pub type BGOUTEN_W<'a, const O: u8> = crate::BitWriter<'a, VREF_SPEC, O>;
+pub struct BGOUTEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> BGOUTEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u32 & 0x01) << 2);
+        self.w
+    }
+}
 #[doc = "Field `CALIB` reader - Voltage Reference Calibration Value"]
-pub type CALIB_R = crate::FieldReader<u16>;
+pub struct CALIB_R(crate::FieldReader<u16, u16>);
+impl CALIB_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u16) -> Self {
+        CALIB_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CALIB_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `CALIB` writer - Voltage Reference Calibration Value"]
-pub type CALIB_W<'a, const O: u8> = crate::FieldWriter<'a, VREF_SPEC, 11, O, u16>;
+pub struct CALIB_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CALIB_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x07ff << 16)) | ((value as u32 & 0x07ff) << 16);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 1 - Temperature Sensor Output Enable"]
     #[inline(always)]
     pub fn tsen(&self) -> TSEN_R {
-        TSEN_R::new(((self.bits >> 1) & 1) != 0)
+        TSEN_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Bandgap Output Enable"]
     #[inline(always)]
     pub fn bgouten(&self) -> BGOUTEN_R {
-        BGOUTEN_R::new(((self.bits >> 2) & 1) != 0)
+        BGOUTEN_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bits 16:26 - Voltage Reference Calibration Value"]
     #[inline(always)]
@@ -66,21 +155,18 @@ impl R {
 impl W {
     #[doc = "Bit 1 - Temperature Sensor Output Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn tsen(&mut self) -> TSEN_W<1> {
-        TSEN_W::new(self)
+    pub fn tsen(&mut self) -> TSEN_W {
+        TSEN_W { w: self }
     }
     #[doc = "Bit 2 - Bandgap Output Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn bgouten(&mut self) -> BGOUTEN_W<2> {
-        BGOUTEN_W::new(self)
+    pub fn bgouten(&mut self) -> BGOUTEN_W {
+        BGOUTEN_W { w: self }
     }
     #[doc = "Bits 16:26 - Voltage Reference Calibration Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn calib(&mut self) -> CALIB_W<16> {
-        CALIB_W::new(self)
+    pub fn calib(&mut self) -> CALIB_W {
+        CALIB_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -101,10 +187,11 @@ impl crate::Readable for VREF_SPEC {
 #[doc = "`write(|w| ..)` method takes [vref::W](W) writer structure"]
 impl crate::Writable for VREF_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets VREF to value 0"]
 impl crate::Resettable for VREF_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

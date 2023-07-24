@@ -14,9 +14,35 @@ impl From<crate::R<PID3_SPEC>> for R {
     }
 }
 #[doc = "Field `CUSMOD` reader - ARM CUSMOD"]
-pub type CUSMOD_R = crate::FieldReader;
+pub struct CUSMOD_R(crate::FieldReader<u8, u8>);
+impl CUSMOD_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        CUSMOD_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CUSMOD_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `REVAND` reader - Revision Number"]
-pub type REVAND_R = crate::FieldReader;
+pub struct REVAND_R(crate::FieldReader<u8, u8>);
+impl REVAND_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        REVAND_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for REVAND_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 impl R {
     #[doc = "Bits 0:3 - ARM CUSMOD"]
     #[inline(always)]
@@ -40,5 +66,8 @@ impl crate::Readable for PID3_SPEC {
 }
 #[doc = "`reset()` method sets PID3 to value 0"]
 impl crate::Resettable for PID3_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

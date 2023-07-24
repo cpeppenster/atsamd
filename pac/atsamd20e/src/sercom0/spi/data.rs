@@ -35,22 +35,44 @@ impl From<crate::W<DATA_SPEC>> for W {
     }
 }
 #[doc = "Field `DATA` reader - Data"]
-pub type DATA_R = crate::FieldReader<u16>;
+pub struct DATA_R(crate::FieldReader<u16, u16>);
+impl DATA_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u16) -> Self {
+        DATA_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DATA_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `DATA` writer - Data"]
-pub type DATA_W<'a, const O: u8> = crate::FieldWriter<'a, DATA_SPEC, 9, O, u16>;
+pub struct DATA_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> DATA_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01ff) | (value as u16 & 0x01ff);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:8 - Data"]
     #[inline(always)]
     pub fn data(&self) -> DATA_R {
-        DATA_R::new(self.bits & 0x01ff)
+        DATA_R::new((self.bits & 0x01ff) as u16)
     }
 }
 impl W {
     #[doc = "Bits 0:8 - Data"]
     #[inline(always)]
-    #[must_use]
-    pub fn data(&mut self) -> DATA_W<0> {
-        DATA_W::new(self)
+    pub fn data(&mut self) -> DATA_W {
+        DATA_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -71,10 +93,11 @@ impl crate::Readable for DATA_SPEC {
 #[doc = "`write(|w| ..)` method takes [data::W](W) writer structure"]
 impl crate::Writable for DATA_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets DATA to value 0"]
 impl crate::Resettable for DATA_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

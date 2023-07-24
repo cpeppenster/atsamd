@@ -35,22 +35,44 @@ impl From<crate::W<DIRTGL_SPEC>> for W {
     }
 }
 #[doc = "Field `DIRTGL` reader - Port Data Direction Toggle"]
-pub type DIRTGL_R = crate::FieldReader<u32>;
+pub struct DIRTGL_R(crate::FieldReader<u32, u32>);
+impl DIRTGL_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u32) -> Self {
+        DIRTGL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIRTGL_R {
+    type Target = crate::FieldReader<u32, u32>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `DIRTGL` writer - Port Data Direction Toggle"]
-pub type DIRTGL_W<'a, const O: u8> = crate::FieldWriter<'a, DIRTGL_SPEC, 32, O, u32>;
+pub struct DIRTGL_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> DIRTGL_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u32) -> &'a mut W {
+        self.w.bits = value as u32;
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:31 - Port Data Direction Toggle"]
     #[inline(always)]
     pub fn dirtgl(&self) -> DIRTGL_R {
-        DIRTGL_R::new(self.bits)
+        DIRTGL_R::new(self.bits as u32)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Port Data Direction Toggle"]
     #[inline(always)]
-    #[must_use]
-    pub fn dirtgl(&mut self) -> DIRTGL_W<0> {
-        DIRTGL_W::new(self)
+    pub fn dirtgl(&mut self) -> DIRTGL_W {
+        DIRTGL_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -71,10 +93,11 @@ impl crate::Readable for DIRTGL_SPEC {
 #[doc = "`write(|w| ..)` method takes [dirtgl::W](W) writer structure"]
 impl crate::Writable for DIRTGL_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets DIRTGL%s to value 0"]
 impl crate::Resettable for DIRTGL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

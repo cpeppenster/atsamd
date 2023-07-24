@@ -185,6 +185,14 @@
       ],
       "target": "thumbv6m-none-eabi"
     },
+    "samd20e": {
+      "features": [
+        "samd20e",
+        "unproven",
+        "defmt"
+      ],
+      "target": "thumbv6m-none-eabi"
+    },
     "samd21g": {
       "features": [
         "samd21g",
@@ -256,6 +264,10 @@
       "target": "thumbv6m-none-eabi"
     },
     "samd11d":  {
+      "features": [ "samd11d", "unproven", "dma", "rtic", "defmt" ],
+      "target": "thumbv6m-none-eabi"
+    },
+    "samd20e":  {
       "features": [ "samd11d", "unproven", "dma", "rtic", "defmt" ],
       "target": "thumbv6m-none-eabi"
     },

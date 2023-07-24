@@ -35,52 +35,148 @@ impl From<crate::W<INTENSET_SPEC>> for W {
     }
 }
 #[doc = "Field `PREC` reader - Stop Received Interrupt Enable"]
-pub type PREC_R = crate::BitReader;
+pub struct PREC_R(crate::FieldReader<bool, bool>);
+impl PREC_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        PREC_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PREC_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `PREC` writer - Stop Received Interrupt Enable"]
-pub type PREC_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct PREC_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> PREC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | (value as u8 & 0x01);
+        self.w
+    }
+}
 #[doc = "Field `AMATCH` reader - Address Match Interrupt Enable"]
-pub type AMATCH_R = crate::BitReader;
+pub struct AMATCH_R(crate::FieldReader<bool, bool>);
+impl AMATCH_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        AMATCH_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for AMATCH_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `AMATCH` writer - Address Match Interrupt Enable"]
-pub type AMATCH_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct AMATCH_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> AMATCH_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u8 & 0x01) << 1);
+        self.w
+    }
+}
 #[doc = "Field `DRDY` reader - Data Ready Interrupt Enable"]
-pub type DRDY_R = crate::BitReader;
+pub struct DRDY_R(crate::FieldReader<bool, bool>);
+impl DRDY_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        DRDY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DRDY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `DRDY` writer - Data Ready Interrupt Enable"]
-pub type DRDY_W<'a, const O: u8> = crate::BitWriter<'a, INTENSET_SPEC, O>;
+pub struct DRDY_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> DRDY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u8 & 0x01) << 2);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 0 - Stop Received Interrupt Enable"]
     #[inline(always)]
     pub fn prec(&self) -> PREC_R {
-        PREC_R::new((self.bits & 1) != 0)
+        PREC_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Address Match Interrupt Enable"]
     #[inline(always)]
     pub fn amatch(&self) -> AMATCH_R {
-        AMATCH_R::new(((self.bits >> 1) & 1) != 0)
+        AMATCH_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Data Ready Interrupt Enable"]
     #[inline(always)]
     pub fn drdy(&self) -> DRDY_R {
-        DRDY_R::new(((self.bits >> 2) & 1) != 0)
+        DRDY_R::new(((self.bits >> 2) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Stop Received Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn prec(&mut self) -> PREC_W<0> {
-        PREC_W::new(self)
+    pub fn prec(&mut self) -> PREC_W {
+        PREC_W { w: self }
     }
     #[doc = "Bit 1 - Address Match Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn amatch(&mut self) -> AMATCH_W<1> {
-        AMATCH_W::new(self)
+    pub fn amatch(&mut self) -> AMATCH_W {
+        AMATCH_W { w: self }
     }
     #[doc = "Bit 2 - Data Ready Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn drdy(&mut self) -> DRDY_W<2> {
-        DRDY_W::new(self)
+    pub fn drdy(&mut self) -> DRDY_W {
+        DRDY_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -101,10 +197,11 @@ impl crate::Readable for INTENSET_SPEC {
 #[doc = "`write(|w| ..)` method takes [intenset::W](W) writer structure"]
 impl crate::Writable for INTENSET_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets INTENSET to value 0"]
 impl crate::Resettable for INTENSET_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

@@ -35,17 +35,86 @@ impl From<crate::W<DFLLMUL_SPEC>> for W {
     }
 }
 #[doc = "Field `MUL` reader - Multiplication Value"]
-pub type MUL_R = crate::FieldReader<u16>;
+pub struct MUL_R(crate::FieldReader<u16, u16>);
+impl MUL_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u16) -> Self {
+        MUL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MUL_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `MUL` writer - Multiplication Value"]
-pub type MUL_W<'a, const O: u8> = crate::FieldWriter<'a, DFLLMUL_SPEC, 16, O, u16>;
+pub struct MUL_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> MUL_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0xffff) | (value as u32 & 0xffff);
+        self.w
+    }
+}
 #[doc = "Field `FSTEP` reader - Maximum Fine Step Size"]
-pub type FSTEP_R = crate::FieldReader<u16>;
+pub struct FSTEP_R(crate::FieldReader<u16, u16>);
+impl FSTEP_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u16) -> Self {
+        FSTEP_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FSTEP_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `FSTEP` writer - Maximum Fine Step Size"]
-pub type FSTEP_W<'a, const O: u8> = crate::FieldWriter<'a, DFLLMUL_SPEC, 10, O, u16>;
+pub struct FSTEP_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> FSTEP_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x03ff << 16)) | ((value as u32 & 0x03ff) << 16);
+        self.w
+    }
+}
 #[doc = "Field `CSTEP` reader - Maximum Coarse Step Size"]
-pub type CSTEP_R = crate::FieldReader;
+pub struct CSTEP_R(crate::FieldReader<u8, u8>);
+impl CSTEP_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        CSTEP_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CSTEP_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `CSTEP` writer - Maximum Coarse Step Size"]
-pub type CSTEP_W<'a, const O: u8> = crate::FieldWriter<'a, DFLLMUL_SPEC, 6, O>;
+pub struct CSTEP_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CSTEP_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x3f << 26)) | ((value as u32 & 0x3f) << 26);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:15 - Multiplication Value"]
     #[inline(always)]
@@ -66,21 +135,18 @@ impl R {
 impl W {
     #[doc = "Bits 0:15 - Multiplication Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn mul(&mut self) -> MUL_W<0> {
-        MUL_W::new(self)
+    pub fn mul(&mut self) -> MUL_W {
+        MUL_W { w: self }
     }
     #[doc = "Bits 16:25 - Maximum Fine Step Size"]
     #[inline(always)]
-    #[must_use]
-    pub fn fstep(&mut self) -> FSTEP_W<16> {
-        FSTEP_W::new(self)
+    pub fn fstep(&mut self) -> FSTEP_W {
+        FSTEP_W { w: self }
     }
     #[doc = "Bits 26:31 - Maximum Coarse Step Size"]
     #[inline(always)]
-    #[must_use]
-    pub fn cstep(&mut self) -> CSTEP_W<26> {
-        CSTEP_W::new(self)
+    pub fn cstep(&mut self) -> CSTEP_W {
+        CSTEP_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -101,10 +167,11 @@ impl crate::Readable for DFLLMUL_SPEC {
 #[doc = "`write(|w| ..)` method takes [dfllmul::W](W) writer structure"]
 impl crate::Writable for DFLLMUL_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets DFLLMUL to value 0"]
 impl crate::Resettable for DFLLMUL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

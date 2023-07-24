@@ -14,7 +14,20 @@ impl From<crate::R<CID0_SPEC>> for R {
     }
 }
 #[doc = "Field `PREAMBLEB0` reader - Preamble Byte 0"]
-pub type PREAMBLEB0_R = crate::FieldReader;
+pub struct PREAMBLEB0_R(crate::FieldReader<u8, u8>);
+impl PREAMBLEB0_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        PREAMBLEB0_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PREAMBLEB0_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 impl R {
     #[doc = "Bits 0:7 - Preamble Byte 0"]
     #[inline(always)]
@@ -33,5 +46,8 @@ impl crate::Readable for CID0_SPEC {
 }
 #[doc = "`reset()` method sets CID0 to value 0x0d"]
 impl crate::Resettable for CID0_SPEC {
-    const RESET_VALUE: Self::Ux = 0x0d;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x0d
+    }
 }

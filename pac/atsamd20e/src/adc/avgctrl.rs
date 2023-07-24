@@ -34,12 +34,10 @@ impl From<crate::W<AVGCTRL_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `SAMPLENUM` reader - Number of Samples to be Collected"]
-pub type SAMPLENUM_R = crate::FieldReader<SAMPLENUMSELECT_A>;
 #[doc = "Number of Samples to be Collected\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
-pub enum SAMPLENUMSELECT_A {
+pub enum SAMPLENUM_A {
     #[doc = "0: 1 sample"]
     _1 = 0,
     #[doc = "1: 2 samples"]
@@ -63,178 +61,221 @@ pub enum SAMPLENUMSELECT_A {
     #[doc = "10: 1024 samples"]
     _1024 = 10,
 }
-impl From<SAMPLENUMSELECT_A> for u8 {
+impl From<SAMPLENUM_A> for u8 {
     #[inline(always)]
-    fn from(variant: SAMPLENUMSELECT_A) -> Self {
+    fn from(variant: SAMPLENUM_A) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for SAMPLENUMSELECT_A {
-    type Ux = u8;
-}
+#[doc = "Field `SAMPLENUM` reader - Number of Samples to be Collected"]
+pub struct SAMPLENUM_R(crate::FieldReader<u8, SAMPLENUM_A>);
 impl SAMPLENUM_R {
-    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<SAMPLENUMSELECT_A> {
+    pub(crate) fn new(bits: u8) -> Self {
+        SAMPLENUM_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<SAMPLENUM_A> {
         match self.bits {
-            0 => Some(SAMPLENUMSELECT_A::_1),
-            1 => Some(SAMPLENUMSELECT_A::_2),
-            2 => Some(SAMPLENUMSELECT_A::_4),
-            3 => Some(SAMPLENUMSELECT_A::_8),
-            4 => Some(SAMPLENUMSELECT_A::_16),
-            5 => Some(SAMPLENUMSELECT_A::_32),
-            6 => Some(SAMPLENUMSELECT_A::_64),
-            7 => Some(SAMPLENUMSELECT_A::_128),
-            8 => Some(SAMPLENUMSELECT_A::_256),
-            9 => Some(SAMPLENUMSELECT_A::_512),
-            10 => Some(SAMPLENUMSELECT_A::_1024),
+            0 => Some(SAMPLENUM_A::_1),
+            1 => Some(SAMPLENUM_A::_2),
+            2 => Some(SAMPLENUM_A::_4),
+            3 => Some(SAMPLENUM_A::_8),
+            4 => Some(SAMPLENUM_A::_16),
+            5 => Some(SAMPLENUM_A::_32),
+            6 => Some(SAMPLENUM_A::_64),
+            7 => Some(SAMPLENUM_A::_128),
+            8 => Some(SAMPLENUM_A::_256),
+            9 => Some(SAMPLENUM_A::_512),
+            10 => Some(SAMPLENUM_A::_1024),
             _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `_1`"]
     #[inline(always)]
     pub fn is_1(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_1
+        **self == SAMPLENUM_A::_1
     }
     #[doc = "Checks if the value of the field is `_2`"]
     #[inline(always)]
     pub fn is_2(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_2
+        **self == SAMPLENUM_A::_2
     }
     #[doc = "Checks if the value of the field is `_4`"]
     #[inline(always)]
     pub fn is_4(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_4
+        **self == SAMPLENUM_A::_4
     }
     #[doc = "Checks if the value of the field is `_8`"]
     #[inline(always)]
     pub fn is_8(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_8
+        **self == SAMPLENUM_A::_8
     }
     #[doc = "Checks if the value of the field is `_16`"]
     #[inline(always)]
     pub fn is_16(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_16
+        **self == SAMPLENUM_A::_16
     }
     #[doc = "Checks if the value of the field is `_32`"]
     #[inline(always)]
     pub fn is_32(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_32
+        **self == SAMPLENUM_A::_32
     }
     #[doc = "Checks if the value of the field is `_64`"]
     #[inline(always)]
     pub fn is_64(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_64
+        **self == SAMPLENUM_A::_64
     }
     #[doc = "Checks if the value of the field is `_128`"]
     #[inline(always)]
     pub fn is_128(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_128
+        **self == SAMPLENUM_A::_128
     }
     #[doc = "Checks if the value of the field is `_256`"]
     #[inline(always)]
     pub fn is_256(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_256
+        **self == SAMPLENUM_A::_256
     }
     #[doc = "Checks if the value of the field is `_512`"]
     #[inline(always)]
     pub fn is_512(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_512
+        **self == SAMPLENUM_A::_512
     }
     #[doc = "Checks if the value of the field is `_1024`"]
     #[inline(always)]
     pub fn is_1024(&self) -> bool {
-        *self == SAMPLENUMSELECT_A::_1024
+        **self == SAMPLENUM_A::_1024
+    }
+}
+impl core::ops::Deref for SAMPLENUM_R {
+    type Target = crate::FieldReader<u8, SAMPLENUM_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Field `SAMPLENUM` writer - Number of Samples to be Collected"]
-pub type SAMPLENUM_W<'a, const O: u8> =
-    crate::FieldWriter<'a, AVGCTRL_SPEC, 4, O, SAMPLENUMSELECT_A>;
-impl<'a, const O: u8> SAMPLENUM_W<'a, O> {
+pub struct SAMPLENUM_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> SAMPLENUM_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: SAMPLENUM_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
     #[doc = "1 sample"]
     #[inline(always)]
     pub fn _1(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_1)
+        self.variant(SAMPLENUM_A::_1)
     }
     #[doc = "2 samples"]
     #[inline(always)]
     pub fn _2(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_2)
+        self.variant(SAMPLENUM_A::_2)
     }
     #[doc = "4 samples"]
     #[inline(always)]
     pub fn _4(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_4)
+        self.variant(SAMPLENUM_A::_4)
     }
     #[doc = "8 samples"]
     #[inline(always)]
     pub fn _8(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_8)
+        self.variant(SAMPLENUM_A::_8)
     }
     #[doc = "16 samples"]
     #[inline(always)]
     pub fn _16(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_16)
+        self.variant(SAMPLENUM_A::_16)
     }
     #[doc = "32 samples"]
     #[inline(always)]
     pub fn _32(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_32)
+        self.variant(SAMPLENUM_A::_32)
     }
     #[doc = "64 samples"]
     #[inline(always)]
     pub fn _64(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_64)
+        self.variant(SAMPLENUM_A::_64)
     }
     #[doc = "128 samples"]
     #[inline(always)]
     pub fn _128(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_128)
+        self.variant(SAMPLENUM_A::_128)
     }
     #[doc = "256 samples"]
     #[inline(always)]
     pub fn _256(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_256)
+        self.variant(SAMPLENUM_A::_256)
     }
     #[doc = "512 samples"]
     #[inline(always)]
     pub fn _512(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_512)
+        self.variant(SAMPLENUM_A::_512)
     }
     #[doc = "1024 samples"]
     #[inline(always)]
     pub fn _1024(self) -> &'a mut W {
-        self.variant(SAMPLENUMSELECT_A::_1024)
+        self.variant(SAMPLENUM_A::_1024)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x0f) | (value as u8 & 0x0f);
+        self.w
     }
 }
 #[doc = "Field `ADJRES` reader - Adjusting Result / Division Coefficient"]
-pub type ADJRES_R = crate::FieldReader;
+pub struct ADJRES_R(crate::FieldReader<u8, u8>);
+impl ADJRES_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        ADJRES_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ADJRES_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ADJRES` writer - Adjusting Result / Division Coefficient"]
-pub type ADJRES_W<'a, const O: u8> = crate::FieldWriter<'a, AVGCTRL_SPEC, 3, O>;
+pub struct ADJRES_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ADJRES_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x07 << 4)) | ((value as u8 & 0x07) << 4);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:3 - Number of Samples to be Collected"]
     #[inline(always)]
     pub fn samplenum(&self) -> SAMPLENUM_R {
-        SAMPLENUM_R::new(self.bits & 0x0f)
+        SAMPLENUM_R::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bits 4:6 - Adjusting Result / Division Coefficient"]
     #[inline(always)]
     pub fn adjres(&self) -> ADJRES_R {
-        ADJRES_R::new((self.bits >> 4) & 7)
+        ADJRES_R::new(((self.bits >> 4) & 0x07) as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:3 - Number of Samples to be Collected"]
     #[inline(always)]
-    #[must_use]
-    pub fn samplenum(&mut self) -> SAMPLENUM_W<0> {
-        SAMPLENUM_W::new(self)
+    pub fn samplenum(&mut self) -> SAMPLENUM_W {
+        SAMPLENUM_W { w: self }
     }
     #[doc = "Bits 4:6 - Adjusting Result / Division Coefficient"]
     #[inline(always)]
-    #[must_use]
-    pub fn adjres(&mut self) -> ADJRES_W<4> {
-        ADJRES_W::new(self)
+    pub fn adjres(&mut self) -> ADJRES_W {
+        ADJRES_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -255,10 +296,11 @@ impl crate::Readable for AVGCTRL_SPEC {
 #[doc = "`write(|w| ..)` method takes [avgctrl::W](W) writer structure"]
 impl crate::Writable for AVGCTRL_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets AVGCTRL to value 0"]
 impl crate::Resettable for AVGCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

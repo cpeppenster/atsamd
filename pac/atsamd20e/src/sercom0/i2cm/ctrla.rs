@@ -35,19 +35,83 @@ impl From<crate::W<CTRLA_SPEC>> for W {
     }
 }
 #[doc = "Field `SWRST` reader - Software Reset"]
-pub type SWRST_R = crate::BitReader;
+pub struct SWRST_R(crate::FieldReader<bool, bool>);
+impl SWRST_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        SWRST_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SWRST_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `SWRST` writer - Software Reset"]
-pub type SWRST_W<'a, const O: u8> = crate::BitWriter<'a, CTRLA_SPEC, O>;
+pub struct SWRST_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> SWRST_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | (value as u32 & 0x01);
+        self.w
+    }
+}
 #[doc = "Field `ENABLE` reader - Enable"]
-pub type ENABLE_R = crate::BitReader;
+pub struct ENABLE_R(crate::FieldReader<bool, bool>);
+impl ENABLE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        ENABLE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ENABLE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ENABLE` writer - Enable"]
-pub type ENABLE_W<'a, const O: u8> = crate::BitWriter<'a, CTRLA_SPEC, O>;
-#[doc = "Field `MODE` reader - Operating Mode"]
-pub type MODE_R = crate::FieldReader<MODESELECT_A>;
+pub struct ENABLE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ENABLE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u32 & 0x01) << 1);
+        self.w
+    }
+}
 #[doc = "Operating Mode\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
-pub enum MODESELECT_A {
+pub enum MODE_A {
     #[doc = "0: USART mode with external clock"]
     USART_EXT_CLK = 0,
     #[doc = "1: USART mode with internal clock"]
@@ -61,204 +125,364 @@ pub enum MODESELECT_A {
     #[doc = "5: I2C mode with internal clock"]
     I2C_MASTER = 5,
 }
-impl From<MODESELECT_A> for u8 {
+impl From<MODE_A> for u8 {
     #[inline(always)]
-    fn from(variant: MODESELECT_A) -> Self {
+    fn from(variant: MODE_A) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for MODESELECT_A {
-    type Ux = u8;
-}
+#[doc = "Field `MODE` reader - Operating Mode"]
+pub struct MODE_R(crate::FieldReader<u8, MODE_A>);
 impl MODE_R {
-    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<MODESELECT_A> {
+    pub(crate) fn new(bits: u8) -> Self {
+        MODE_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<MODE_A> {
         match self.bits {
-            0 => Some(MODESELECT_A::USART_EXT_CLK),
-            1 => Some(MODESELECT_A::USART_INT_CLK),
-            2 => Some(MODESELECT_A::SPI_SLAVE),
-            3 => Some(MODESELECT_A::SPI_MASTER),
-            4 => Some(MODESELECT_A::I2C_SLAVE),
-            5 => Some(MODESELECT_A::I2C_MASTER),
+            0 => Some(MODE_A::USART_EXT_CLK),
+            1 => Some(MODE_A::USART_INT_CLK),
+            2 => Some(MODE_A::SPI_SLAVE),
+            3 => Some(MODE_A::SPI_MASTER),
+            4 => Some(MODE_A::I2C_SLAVE),
+            5 => Some(MODE_A::I2C_MASTER),
             _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `USART_EXT_CLK`"]
     #[inline(always)]
     pub fn is_usart_ext_clk(&self) -> bool {
-        *self == MODESELECT_A::USART_EXT_CLK
+        **self == MODE_A::USART_EXT_CLK
     }
     #[doc = "Checks if the value of the field is `USART_INT_CLK`"]
     #[inline(always)]
     pub fn is_usart_int_clk(&self) -> bool {
-        *self == MODESELECT_A::USART_INT_CLK
+        **self == MODE_A::USART_INT_CLK
     }
     #[doc = "Checks if the value of the field is `SPI_SLAVE`"]
     #[inline(always)]
     pub fn is_spi_slave(&self) -> bool {
-        *self == MODESELECT_A::SPI_SLAVE
+        **self == MODE_A::SPI_SLAVE
     }
     #[doc = "Checks if the value of the field is `SPI_MASTER`"]
     #[inline(always)]
     pub fn is_spi_master(&self) -> bool {
-        *self == MODESELECT_A::SPI_MASTER
+        **self == MODE_A::SPI_MASTER
     }
     #[doc = "Checks if the value of the field is `I2C_SLAVE`"]
     #[inline(always)]
     pub fn is_i2c_slave(&self) -> bool {
-        *self == MODESELECT_A::I2C_SLAVE
+        **self == MODE_A::I2C_SLAVE
     }
     #[doc = "Checks if the value of the field is `I2C_MASTER`"]
     #[inline(always)]
     pub fn is_i2c_master(&self) -> bool {
-        *self == MODESELECT_A::I2C_MASTER
+        **self == MODE_A::I2C_MASTER
+    }
+}
+impl core::ops::Deref for MODE_R {
+    type Target = crate::FieldReader<u8, MODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Field `MODE` writer - Operating Mode"]
-pub type MODE_W<'a, const O: u8> = crate::FieldWriter<'a, CTRLA_SPEC, 3, O, MODESELECT_A>;
-impl<'a, const O: u8> MODE_W<'a, O> {
+pub struct MODE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> MODE_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: MODE_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
     #[doc = "USART mode with external clock"]
     #[inline(always)]
     pub fn usart_ext_clk(self) -> &'a mut W {
-        self.variant(MODESELECT_A::USART_EXT_CLK)
+        self.variant(MODE_A::USART_EXT_CLK)
     }
     #[doc = "USART mode with internal clock"]
     #[inline(always)]
     pub fn usart_int_clk(self) -> &'a mut W {
-        self.variant(MODESELECT_A::USART_INT_CLK)
+        self.variant(MODE_A::USART_INT_CLK)
     }
     #[doc = "SPI mode with external clock"]
     #[inline(always)]
     pub fn spi_slave(self) -> &'a mut W {
-        self.variant(MODESELECT_A::SPI_SLAVE)
+        self.variant(MODE_A::SPI_SLAVE)
     }
     #[doc = "SPI mode with internal clock"]
     #[inline(always)]
     pub fn spi_master(self) -> &'a mut W {
-        self.variant(MODESELECT_A::SPI_MASTER)
+        self.variant(MODE_A::SPI_MASTER)
     }
     #[doc = "I2C mode with external clock"]
     #[inline(always)]
     pub fn i2c_slave(self) -> &'a mut W {
-        self.variant(MODESELECT_A::I2C_SLAVE)
+        self.variant(MODE_A::I2C_SLAVE)
     }
     #[doc = "I2C mode with internal clock"]
     #[inline(always)]
     pub fn i2c_master(self) -> &'a mut W {
-        self.variant(MODESELECT_A::I2C_MASTER)
+        self.variant(MODE_A::I2C_MASTER)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x07 << 2)) | ((value as u32 & 0x07) << 2);
+        self.w
     }
 }
 #[doc = "Field `RUNSTDBY` reader - Run in Standby"]
-pub type RUNSTDBY_R = crate::BitReader;
+pub struct RUNSTDBY_R(crate::FieldReader<bool, bool>);
+impl RUNSTDBY_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        RUNSTDBY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RUNSTDBY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `RUNSTDBY` writer - Run in Standby"]
-pub type RUNSTDBY_W<'a, const O: u8> = crate::BitWriter<'a, CTRLA_SPEC, O>;
+pub struct RUNSTDBY_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> RUNSTDBY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u32 & 0x01) << 7);
+        self.w
+    }
+}
 #[doc = "Field `PINOUT` reader - Pin Usage"]
-pub type PINOUT_R = crate::BitReader;
+pub struct PINOUT_R(crate::FieldReader<bool, bool>);
+impl PINOUT_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        PINOUT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PINOUT_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `PINOUT` writer - Pin Usage"]
-pub type PINOUT_W<'a, const O: u8> = crate::BitWriter<'a, CTRLA_SPEC, O>;
+pub struct PINOUT_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> PINOUT_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 16)) | ((value as u32 & 0x01) << 16);
+        self.w
+    }
+}
 #[doc = "Field `SDAHOLD` reader - SDA Hold Time"]
-pub type SDAHOLD_R = crate::FieldReader;
+pub struct SDAHOLD_R(crate::FieldReader<u8, u8>);
+impl SDAHOLD_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        SDAHOLD_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SDAHOLD_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `SDAHOLD` writer - SDA Hold Time"]
-pub type SDAHOLD_W<'a, const O: u8> = crate::FieldWriter<'a, CTRLA_SPEC, 2, O>;
+pub struct SDAHOLD_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> SDAHOLD_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x03 << 20)) | ((value as u32 & 0x03) << 20);
+        self.w
+    }
+}
 #[doc = "Field `INACTOUT` reader - Inactive Time-out"]
-pub type INACTOUT_R = crate::FieldReader;
+pub struct INACTOUT_R(crate::FieldReader<u8, u8>);
+impl INACTOUT_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        INACTOUT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for INACTOUT_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `INACTOUT` writer - Inactive Time-out"]
-pub type INACTOUT_W<'a, const O: u8> = crate::FieldWriter<'a, CTRLA_SPEC, 2, O>;
+pub struct INACTOUT_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> INACTOUT_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x03 << 28)) | ((value as u32 & 0x03) << 28);
+        self.w
+    }
+}
 #[doc = "Field `LOWTOUT` reader - SCL Low Time-out"]
-pub type LOWTOUT_R = crate::BitReader;
+pub struct LOWTOUT_R(crate::FieldReader<bool, bool>);
+impl LOWTOUT_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        LOWTOUT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for LOWTOUT_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `LOWTOUT` writer - SCL Low Time-out"]
-pub type LOWTOUT_W<'a, const O: u8> = crate::BitWriter<'a, CTRLA_SPEC, O>;
+pub struct LOWTOUT_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> LOWTOUT_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 30)) | ((value as u32 & 0x01) << 30);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 0 - Software Reset"]
     #[inline(always)]
     pub fn swrst(&self) -> SWRST_R {
-        SWRST_R::new((self.bits & 1) != 0)
+        SWRST_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Enable"]
     #[inline(always)]
     pub fn enable(&self) -> ENABLE_R {
-        ENABLE_R::new(((self.bits >> 1) & 1) != 0)
+        ENABLE_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bits 2:4 - Operating Mode"]
     #[inline(always)]
     pub fn mode(&self) -> MODE_R {
-        MODE_R::new(((self.bits >> 2) & 7) as u8)
+        MODE_R::new(((self.bits >> 2) & 0x07) as u8)
     }
     #[doc = "Bit 7 - Run in Standby"]
     #[inline(always)]
     pub fn runstdby(&self) -> RUNSTDBY_R {
-        RUNSTDBY_R::new(((self.bits >> 7) & 1) != 0)
+        RUNSTDBY_R::new(((self.bits >> 7) & 0x01) != 0)
     }
     #[doc = "Bit 16 - Pin Usage"]
     #[inline(always)]
     pub fn pinout(&self) -> PINOUT_R {
-        PINOUT_R::new(((self.bits >> 16) & 1) != 0)
+        PINOUT_R::new(((self.bits >> 16) & 0x01) != 0)
     }
     #[doc = "Bits 20:21 - SDA Hold Time"]
     #[inline(always)]
     pub fn sdahold(&self) -> SDAHOLD_R {
-        SDAHOLD_R::new(((self.bits >> 20) & 3) as u8)
+        SDAHOLD_R::new(((self.bits >> 20) & 0x03) as u8)
     }
     #[doc = "Bits 28:29 - Inactive Time-out"]
     #[inline(always)]
     pub fn inactout(&self) -> INACTOUT_R {
-        INACTOUT_R::new(((self.bits >> 28) & 3) as u8)
+        INACTOUT_R::new(((self.bits >> 28) & 0x03) as u8)
     }
     #[doc = "Bit 30 - SCL Low Time-out"]
     #[inline(always)]
     pub fn lowtout(&self) -> LOWTOUT_R {
-        LOWTOUT_R::new(((self.bits >> 30) & 1) != 0)
+        LOWTOUT_R::new(((self.bits >> 30) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Software Reset"]
     #[inline(always)]
-    #[must_use]
-    pub fn swrst(&mut self) -> SWRST_W<0> {
-        SWRST_W::new(self)
+    pub fn swrst(&mut self) -> SWRST_W {
+        SWRST_W { w: self }
     }
     #[doc = "Bit 1 - Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn enable(&mut self) -> ENABLE_W<1> {
-        ENABLE_W::new(self)
+    pub fn enable(&mut self) -> ENABLE_W {
+        ENABLE_W { w: self }
     }
     #[doc = "Bits 2:4 - Operating Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn mode(&mut self) -> MODE_W<2> {
-        MODE_W::new(self)
+    pub fn mode(&mut self) -> MODE_W {
+        MODE_W { w: self }
     }
     #[doc = "Bit 7 - Run in Standby"]
     #[inline(always)]
-    #[must_use]
-    pub fn runstdby(&mut self) -> RUNSTDBY_W<7> {
-        RUNSTDBY_W::new(self)
+    pub fn runstdby(&mut self) -> RUNSTDBY_W {
+        RUNSTDBY_W { w: self }
     }
     #[doc = "Bit 16 - Pin Usage"]
     #[inline(always)]
-    #[must_use]
-    pub fn pinout(&mut self) -> PINOUT_W<16> {
-        PINOUT_W::new(self)
+    pub fn pinout(&mut self) -> PINOUT_W {
+        PINOUT_W { w: self }
     }
     #[doc = "Bits 20:21 - SDA Hold Time"]
     #[inline(always)]
-    #[must_use]
-    pub fn sdahold(&mut self) -> SDAHOLD_W<20> {
-        SDAHOLD_W::new(self)
+    pub fn sdahold(&mut self) -> SDAHOLD_W {
+        SDAHOLD_W { w: self }
     }
     #[doc = "Bits 28:29 - Inactive Time-out"]
     #[inline(always)]
-    #[must_use]
-    pub fn inactout(&mut self) -> INACTOUT_W<28> {
-        INACTOUT_W::new(self)
+    pub fn inactout(&mut self) -> INACTOUT_W {
+        INACTOUT_W { w: self }
     }
     #[doc = "Bit 30 - SCL Low Time-out"]
     #[inline(always)]
-    #[must_use]
-    pub fn lowtout(&mut self) -> LOWTOUT_W<30> {
-        LOWTOUT_W::new(self)
+    pub fn lowtout(&mut self) -> LOWTOUT_W {
+        LOWTOUT_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -279,10 +503,11 @@ impl crate::Readable for CTRLA_SPEC {
 #[doc = "`write(|w| ..)` method takes [ctrla::W](W) writer structure"]
 impl crate::Writable for CTRLA_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets CTRLA to value 0"]
 impl crate::Resettable for CTRLA_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

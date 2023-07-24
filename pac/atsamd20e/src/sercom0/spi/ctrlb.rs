@@ -35,19 +35,73 @@ impl From<crate::W<CTRLB_SPEC>> for W {
     }
 }
 #[doc = "Field `CHSIZE` reader - Character Size"]
-pub type CHSIZE_R = crate::FieldReader;
+pub struct CHSIZE_R(crate::FieldReader<u8, u8>);
+impl CHSIZE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        CHSIZE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CHSIZE_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `CHSIZE` writer - Character Size"]
-pub type CHSIZE_W<'a, const O: u8> = crate::FieldWriter<'a, CTRLB_SPEC, 3, O>;
+pub struct CHSIZE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CHSIZE_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x07) | (value as u32 & 0x07);
+        self.w
+    }
+}
 #[doc = "Field `PLOADEN` reader - Slave Data Preload Enable"]
-pub type PLOADEN_R = crate::BitReader;
+pub struct PLOADEN_R(crate::FieldReader<bool, bool>);
+impl PLOADEN_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        PLOADEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PLOADEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `PLOADEN` writer - Slave Data Preload Enable"]
-pub type PLOADEN_W<'a, const O: u8> = crate::BitWriter<'a, CTRLB_SPEC, O>;
-#[doc = "Field `AMODE` reader - Address Mode"]
-pub type AMODE_R = crate::FieldReader<AMODESELECT_A>;
+pub struct PLOADEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> PLOADEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u32 & 0x01) << 6);
+        self.w
+    }
+}
 #[doc = "Address Mode\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
-pub enum AMODESELECT_A {
+pub enum AMODE_A {
     #[doc = "0: ADDRMASK is used as a mask to the ADDR register."]
     MASK = 0,
     #[doc = "1: The slave responds to the 2 unique addresses in ADDR and ADDRMASK."]
@@ -55,111 +109,163 @@ pub enum AMODESELECT_A {
     #[doc = "2: The slave responds to the range of addresses between and including ADDR and ADDRMASK. ADDR is the upper limit."]
     RANGE = 2,
 }
-impl From<AMODESELECT_A> for u8 {
+impl From<AMODE_A> for u8 {
     #[inline(always)]
-    fn from(variant: AMODESELECT_A) -> Self {
+    fn from(variant: AMODE_A) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for AMODESELECT_A {
-    type Ux = u8;
-}
+#[doc = "Field `AMODE` reader - Address Mode"]
+pub struct AMODE_R(crate::FieldReader<u8, AMODE_A>);
 impl AMODE_R {
-    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<AMODESELECT_A> {
+    pub(crate) fn new(bits: u8) -> Self {
+        AMODE_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<AMODE_A> {
         match self.bits {
-            0 => Some(AMODESELECT_A::MASK),
-            1 => Some(AMODESELECT_A::_2ADDR),
-            2 => Some(AMODESELECT_A::RANGE),
+            0 => Some(AMODE_A::MASK),
+            1 => Some(AMODE_A::_2ADDR),
+            2 => Some(AMODE_A::RANGE),
             _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `MASK`"]
     #[inline(always)]
     pub fn is_mask(&self) -> bool {
-        *self == AMODESELECT_A::MASK
+        **self == AMODE_A::MASK
     }
     #[doc = "Checks if the value of the field is `_2ADDR`"]
     #[inline(always)]
     pub fn is_2addr(&self) -> bool {
-        *self == AMODESELECT_A::_2ADDR
+        **self == AMODE_A::_2ADDR
     }
     #[doc = "Checks if the value of the field is `RANGE`"]
     #[inline(always)]
     pub fn is_range(&self) -> bool {
-        *self == AMODESELECT_A::RANGE
+        **self == AMODE_A::RANGE
+    }
+}
+impl core::ops::Deref for AMODE_R {
+    type Target = crate::FieldReader<u8, AMODE_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Field `AMODE` writer - Address Mode"]
-pub type AMODE_W<'a, const O: u8> = crate::FieldWriter<'a, CTRLB_SPEC, 2, O, AMODESELECT_A>;
-impl<'a, const O: u8> AMODE_W<'a, O> {
+pub struct AMODE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> AMODE_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: AMODE_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
     #[doc = "ADDRMASK is used as a mask to the ADDR register."]
     #[inline(always)]
     pub fn mask(self) -> &'a mut W {
-        self.variant(AMODESELECT_A::MASK)
+        self.variant(AMODE_A::MASK)
     }
     #[doc = "The slave responds to the 2 unique addresses in ADDR and ADDRMASK."]
     #[inline(always)]
     pub fn _2addr(self) -> &'a mut W {
-        self.variant(AMODESELECT_A::_2ADDR)
+        self.variant(AMODE_A::_2ADDR)
     }
     #[doc = "The slave responds to the range of addresses between and including ADDR and ADDRMASK. ADDR is the upper limit."]
     #[inline(always)]
     pub fn range(self) -> &'a mut W {
-        self.variant(AMODESELECT_A::RANGE)
+        self.variant(AMODE_A::RANGE)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x03 << 14)) | ((value as u32 & 0x03) << 14);
+        self.w
     }
 }
 #[doc = "Field `RXEN` reader - Receiver Enable"]
-pub type RXEN_R = crate::BitReader;
+pub struct RXEN_R(crate::FieldReader<bool, bool>);
+impl RXEN_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        RXEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RXEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `RXEN` writer - Receiver Enable"]
-pub type RXEN_W<'a, const O: u8> = crate::BitWriter<'a, CTRLB_SPEC, O>;
+pub struct RXEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> RXEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 17)) | ((value as u32 & 0x01) << 17);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:2 - Character Size"]
     #[inline(always)]
     pub fn chsize(&self) -> CHSIZE_R {
-        CHSIZE_R::new((self.bits & 7) as u8)
+        CHSIZE_R::new((self.bits & 0x07) as u8)
     }
     #[doc = "Bit 6 - Slave Data Preload Enable"]
     #[inline(always)]
     pub fn ploaden(&self) -> PLOADEN_R {
-        PLOADEN_R::new(((self.bits >> 6) & 1) != 0)
+        PLOADEN_R::new(((self.bits >> 6) & 0x01) != 0)
     }
     #[doc = "Bits 14:15 - Address Mode"]
     #[inline(always)]
     pub fn amode(&self) -> AMODE_R {
-        AMODE_R::new(((self.bits >> 14) & 3) as u8)
+        AMODE_R::new(((self.bits >> 14) & 0x03) as u8)
     }
     #[doc = "Bit 17 - Receiver Enable"]
     #[inline(always)]
     pub fn rxen(&self) -> RXEN_R {
-        RXEN_R::new(((self.bits >> 17) & 1) != 0)
+        RXEN_R::new(((self.bits >> 17) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:2 - Character Size"]
     #[inline(always)]
-    #[must_use]
-    pub fn chsize(&mut self) -> CHSIZE_W<0> {
-        CHSIZE_W::new(self)
+    pub fn chsize(&mut self) -> CHSIZE_W {
+        CHSIZE_W { w: self }
     }
     #[doc = "Bit 6 - Slave Data Preload Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ploaden(&mut self) -> PLOADEN_W<6> {
-        PLOADEN_W::new(self)
+    pub fn ploaden(&mut self) -> PLOADEN_W {
+        PLOADEN_W { w: self }
     }
     #[doc = "Bits 14:15 - Address Mode"]
     #[inline(always)]
-    #[must_use]
-    pub fn amode(&mut self) -> AMODE_W<14> {
-        AMODE_W::new(self)
+    pub fn amode(&mut self) -> AMODE_W {
+        AMODE_W { w: self }
     }
     #[doc = "Bit 17 - Receiver Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn rxen(&mut self) -> RXEN_W<17> {
-        RXEN_W::new(self)
+    pub fn rxen(&mut self) -> RXEN_W {
+        RXEN_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -180,10 +286,11 @@ impl crate::Readable for CTRLB_SPEC {
 #[doc = "`write(|w| ..)` method takes [ctrlb::W](W) writer structure"]
 impl crate::Writable for CTRLB_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets CTRLB to value 0"]
 impl crate::Resettable for CTRLB_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

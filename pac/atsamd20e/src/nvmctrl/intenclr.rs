@@ -35,37 +35,101 @@ impl From<crate::W<INTENCLR_SPEC>> for W {
     }
 }
 #[doc = "Field `READY` reader - NVM Ready Interrupt Enable"]
-pub type READY_R = crate::BitReader;
+pub struct READY_R(crate::FieldReader<bool, bool>);
+impl READY_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        READY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for READY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `READY` writer - NVM Ready Interrupt Enable"]
-pub type READY_W<'a, const O: u8> = crate::BitWriter<'a, INTENCLR_SPEC, O>;
+pub struct READY_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> READY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | (value as u8 & 0x01);
+        self.w
+    }
+}
 #[doc = "Field `ERROR` reader - Error Interrupt Enable"]
-pub type ERROR_R = crate::BitReader;
+pub struct ERROR_R(crate::FieldReader<bool, bool>);
+impl ERROR_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        ERROR_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ERROR_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ERROR` writer - Error Interrupt Enable"]
-pub type ERROR_W<'a, const O: u8> = crate::BitWriter<'a, INTENCLR_SPEC, O>;
+pub struct ERROR_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ERROR_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u8 & 0x01) << 1);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 0 - NVM Ready Interrupt Enable"]
     #[inline(always)]
     pub fn ready(&self) -> READY_R {
-        READY_R::new((self.bits & 1) != 0)
+        READY_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Error Interrupt Enable"]
     #[inline(always)]
     pub fn error(&self) -> ERROR_R {
-        ERROR_R::new(((self.bits >> 1) & 1) != 0)
+        ERROR_R::new(((self.bits >> 1) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - NVM Ready Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ready(&mut self) -> READY_W<0> {
-        READY_W::new(self)
+    pub fn ready(&mut self) -> READY_W {
+        READY_W { w: self }
     }
     #[doc = "Bit 1 - Error Interrupt Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn error(&mut self) -> ERROR_W<1> {
-        ERROR_W::new(self)
+    pub fn error(&mut self) -> ERROR_W {
+        ERROR_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -86,10 +150,11 @@ impl crate::Readable for INTENCLR_SPEC {
 #[doc = "`write(|w| ..)` method takes [intenclr::W](W) writer structure"]
 impl crate::Writable for INTENCLR_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets INTENCLR to value 0"]
 impl crate::Resettable for INTENCLR_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

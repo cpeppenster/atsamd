@@ -13,16 +13,6 @@ impl From<crate::R<PID5_SPEC>> for R {
         R(reader)
     }
 }
-impl core::fmt::Debug for R {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        write!(f, "{}", self.bits())
-    }
-}
-impl core::fmt::Debug for crate::generic::Reg<PID5_SPEC> {
-    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        self.read().fmt(f)
-    }
-}
 #[doc = "Peripheral Identification 5\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [pid5](index.html) module"]
 pub struct PID5_SPEC;
 impl crate::RegisterSpec for PID5_SPEC {
@@ -34,5 +24,8 @@ impl crate::Readable for PID5_SPEC {
 }
 #[doc = "`reset()` method sets PID5 to value 0"]
 impl crate::Resettable for PID5_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

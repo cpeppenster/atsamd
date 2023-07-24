@@ -35,13 +35,59 @@ impl From<crate::W<USER_SPEC>> for W {
     }
 }
 #[doc = "Field `USER` reader - User Multiplexer Selection"]
-pub type USER_R = crate::FieldReader;
+pub struct USER_R(crate::FieldReader<u8, u8>);
+impl USER_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        USER_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for USER_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `USER` writer - User Multiplexer Selection"]
-pub type USER_W<'a, const O: u8> = crate::FieldWriter<'a, USER_SPEC, 4, O>;
+pub struct USER_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> USER_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x0f) | (value as u16 & 0x0f);
+        self.w
+    }
+}
 #[doc = "Field `CHANNEL` reader - Channel Event Selection"]
-pub type CHANNEL_R = crate::FieldReader;
+pub struct CHANNEL_R(crate::FieldReader<u8, u8>);
+impl CHANNEL_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        CHANNEL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CHANNEL_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `CHANNEL` writer - Channel Event Selection"]
-pub type CHANNEL_W<'a, const O: u8> = crate::FieldWriter<'a, USER_SPEC, 4, O>;
+pub struct CHANNEL_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CHANNEL_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x0f << 8)) | ((value as u16 & 0x0f) << 8);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:3 - User Multiplexer Selection"]
     #[inline(always)]
@@ -57,15 +103,13 @@ impl R {
 impl W {
     #[doc = "Bits 0:3 - User Multiplexer Selection"]
     #[inline(always)]
-    #[must_use]
-    pub fn user(&mut self) -> USER_W<0> {
-        USER_W::new(self)
+    pub fn user(&mut self) -> USER_W {
+        USER_W { w: self }
     }
     #[doc = "Bits 8:11 - Channel Event Selection"]
     #[inline(always)]
-    #[must_use]
-    pub fn channel(&mut self) -> CHANNEL_W<8> {
-        CHANNEL_W::new(self)
+    pub fn channel(&mut self) -> CHANNEL_W {
+        CHANNEL_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -86,10 +130,11 @@ impl crate::Readable for USER_SPEC {
 #[doc = "`write(|w| ..)` method takes [user::W](W) writer structure"]
 impl crate::Writable for USER_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets USER to value 0"]
 impl crate::Resettable for USER_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

@@ -35,13 +35,59 @@ impl From<crate::W<ADDR_SPEC>> for W {
     }
 }
 #[doc = "Field `ADDR` reader - Address"]
-pub type ADDR_R = crate::FieldReader;
+pub struct ADDR_R(crate::FieldReader<u8, u8>);
+impl ADDR_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        ADDR_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ADDR_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ADDR` writer - Address"]
-pub type ADDR_W<'a, const O: u8> = crate::FieldWriter<'a, ADDR_SPEC, 8, O>;
+pub struct ADDR_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ADDR_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0xff) | (value as u32 & 0xff);
+        self.w
+    }
+}
 #[doc = "Field `ADDRMASK` reader - Address Mask"]
-pub type ADDRMASK_R = crate::FieldReader;
+pub struct ADDRMASK_R(crate::FieldReader<u8, u8>);
+impl ADDRMASK_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        ADDRMASK_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ADDRMASK_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ADDRMASK` writer - Address Mask"]
-pub type ADDRMASK_W<'a, const O: u8> = crate::FieldWriter<'a, ADDR_SPEC, 8, O>;
+pub struct ADDRMASK_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ADDRMASK_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0xff << 16)) | ((value as u32 & 0xff) << 16);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:7 - Address"]
     #[inline(always)]
@@ -57,15 +103,13 @@ impl R {
 impl W {
     #[doc = "Bits 0:7 - Address"]
     #[inline(always)]
-    #[must_use]
-    pub fn addr(&mut self) -> ADDR_W<0> {
-        ADDR_W::new(self)
+    pub fn addr(&mut self) -> ADDR_W {
+        ADDR_W { w: self }
     }
     #[doc = "Bits 16:23 - Address Mask"]
     #[inline(always)]
-    #[must_use]
-    pub fn addrmask(&mut self) -> ADDRMASK_W<16> {
-        ADDRMASK_W::new(self)
+    pub fn addrmask(&mut self) -> ADDRMASK_W {
+        ADDRMASK_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -86,10 +130,11 @@ impl crate::Readable for ADDR_SPEC {
 #[doc = "`write(|w| ..)` method takes [addr::W](W) writer structure"]
 impl crate::Writable for ADDR_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets ADDR to value 0"]
 impl crate::Resettable for ADDR_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

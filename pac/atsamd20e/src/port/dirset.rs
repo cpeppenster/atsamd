@@ -35,22 +35,44 @@ impl From<crate::W<DIRSET_SPEC>> for W {
     }
 }
 #[doc = "Field `DIRSET` reader - Port Data Direction Set"]
-pub type DIRSET_R = crate::FieldReader<u32>;
+pub struct DIRSET_R(crate::FieldReader<u32, u32>);
+impl DIRSET_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u32) -> Self {
+        DIRSET_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIRSET_R {
+    type Target = crate::FieldReader<u32, u32>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `DIRSET` writer - Port Data Direction Set"]
-pub type DIRSET_W<'a, const O: u8> = crate::FieldWriter<'a, DIRSET_SPEC, 32, O, u32>;
+pub struct DIRSET_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> DIRSET_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u32) -> &'a mut W {
+        self.w.bits = value as u32;
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:31 - Port Data Direction Set"]
     #[inline(always)]
     pub fn dirset(&self) -> DIRSET_R {
-        DIRSET_R::new(self.bits)
+        DIRSET_R::new(self.bits as u32)
     }
 }
 impl W {
     #[doc = "Bits 0:31 - Port Data Direction Set"]
     #[inline(always)]
-    #[must_use]
-    pub fn dirset(&mut self) -> DIRSET_W<0> {
-        DIRSET_W::new(self)
+    pub fn dirset(&mut self) -> DIRSET_W {
+        DIRSET_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -71,10 +93,11 @@ impl crate::Readable for DIRSET_SPEC {
 #[doc = "`write(|w| ..)` method takes [dirset::W](W) writer structure"]
 impl crate::Writable for DIRSET_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets DIRSET%s to value 0"]
 impl crate::Resettable for DIRSET_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

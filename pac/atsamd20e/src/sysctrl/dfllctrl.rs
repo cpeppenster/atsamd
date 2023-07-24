@@ -35,127 +35,383 @@ impl From<crate::W<DFLLCTRL_SPEC>> for W {
     }
 }
 #[doc = "Field `ENABLE` reader - Enable"]
-pub type ENABLE_R = crate::BitReader;
+pub struct ENABLE_R(crate::FieldReader<bool, bool>);
+impl ENABLE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        ENABLE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ENABLE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ENABLE` writer - Enable"]
-pub type ENABLE_W<'a, const O: u8> = crate::BitWriter<'a, DFLLCTRL_SPEC, O>;
+pub struct ENABLE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ENABLE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u16 & 0x01) << 1);
+        self.w
+    }
+}
 #[doc = "Field `MODE` reader - Mode Selection"]
-pub type MODE_R = crate::BitReader;
+pub struct MODE_R(crate::FieldReader<bool, bool>);
+impl MODE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        MODE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for MODE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `MODE` writer - Mode Selection"]
-pub type MODE_W<'a, const O: u8> = crate::BitWriter<'a, DFLLCTRL_SPEC, O>;
+pub struct MODE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> MODE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u16 & 0x01) << 2);
+        self.w
+    }
+}
 #[doc = "Field `STABLE` reader - Stable Frequency"]
-pub type STABLE_R = crate::BitReader;
+pub struct STABLE_R(crate::FieldReader<bool, bool>);
+impl STABLE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        STABLE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for STABLE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `STABLE` writer - Stable Frequency"]
-pub type STABLE_W<'a, const O: u8> = crate::BitWriter<'a, DFLLCTRL_SPEC, O>;
+pub struct STABLE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> STABLE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u16 & 0x01) << 3);
+        self.w
+    }
+}
 #[doc = "Field `LLAW` reader - Lose Lock After Wake"]
-pub type LLAW_R = crate::BitReader;
+pub struct LLAW_R(crate::FieldReader<bool, bool>);
+impl LLAW_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        LLAW_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for LLAW_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `LLAW` writer - Lose Lock After Wake"]
-pub type LLAW_W<'a, const O: u8> = crate::BitWriter<'a, DFLLCTRL_SPEC, O>;
+pub struct LLAW_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> LLAW_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u16 & 0x01) << 4);
+        self.w
+    }
+}
 #[doc = "Field `RUNSTDBY` reader - Run during Standby"]
-pub type RUNSTDBY_R = crate::BitReader;
+pub struct RUNSTDBY_R(crate::FieldReader<bool, bool>);
+impl RUNSTDBY_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        RUNSTDBY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for RUNSTDBY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `RUNSTDBY` writer - Run during Standby"]
-pub type RUNSTDBY_W<'a, const O: u8> = crate::BitWriter<'a, DFLLCTRL_SPEC, O>;
+pub struct RUNSTDBY_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> RUNSTDBY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 6)) | ((value as u16 & 0x01) << 6);
+        self.w
+    }
+}
 #[doc = "Field `ONDEMAND` reader - Enable on Demand"]
-pub type ONDEMAND_R = crate::BitReader;
+pub struct ONDEMAND_R(crate::FieldReader<bool, bool>);
+impl ONDEMAND_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        ONDEMAND_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for ONDEMAND_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `ONDEMAND` writer - Enable on Demand"]
-pub type ONDEMAND_W<'a, const O: u8> = crate::BitWriter<'a, DFLLCTRL_SPEC, O>;
+pub struct ONDEMAND_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ONDEMAND_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 7)) | ((value as u16 & 0x01) << 7);
+        self.w
+    }
+}
 #[doc = "Field `CCDIS` reader - Chill Cycle Disable"]
-pub type CCDIS_R = crate::BitReader;
+pub struct CCDIS_R(crate::FieldReader<bool, bool>);
+impl CCDIS_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        CCDIS_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CCDIS_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `CCDIS` writer - Chill Cycle Disable"]
-pub type CCDIS_W<'a, const O: u8> = crate::BitWriter<'a, DFLLCTRL_SPEC, O>;
+pub struct CCDIS_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CCDIS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 8)) | ((value as u16 & 0x01) << 8);
+        self.w
+    }
+}
 #[doc = "Field `QLDIS` reader - Quick Lock Disable"]
-pub type QLDIS_R = crate::BitReader;
+pub struct QLDIS_R(crate::FieldReader<bool, bool>);
+impl QLDIS_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        QLDIS_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for QLDIS_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `QLDIS` writer - Quick Lock Disable"]
-pub type QLDIS_W<'a, const O: u8> = crate::BitWriter<'a, DFLLCTRL_SPEC, O>;
+pub struct QLDIS_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> QLDIS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 9)) | ((value as u16 & 0x01) << 9);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 1 - Enable"]
     #[inline(always)]
     pub fn enable(&self) -> ENABLE_R {
-        ENABLE_R::new(((self.bits >> 1) & 1) != 0)
+        ENABLE_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Mode Selection"]
     #[inline(always)]
     pub fn mode(&self) -> MODE_R {
-        MODE_R::new(((self.bits >> 2) & 1) != 0)
+        MODE_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3 - Stable Frequency"]
     #[inline(always)]
     pub fn stable(&self) -> STABLE_R {
-        STABLE_R::new(((self.bits >> 3) & 1) != 0)
+        STABLE_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4 - Lose Lock After Wake"]
     #[inline(always)]
     pub fn llaw(&self) -> LLAW_R {
-        LLAW_R::new(((self.bits >> 4) & 1) != 0)
+        LLAW_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 6 - Run during Standby"]
     #[inline(always)]
     pub fn runstdby(&self) -> RUNSTDBY_R {
-        RUNSTDBY_R::new(((self.bits >> 6) & 1) != 0)
+        RUNSTDBY_R::new(((self.bits >> 6) & 0x01) != 0)
     }
     #[doc = "Bit 7 - Enable on Demand"]
     #[inline(always)]
     pub fn ondemand(&self) -> ONDEMAND_R {
-        ONDEMAND_R::new(((self.bits >> 7) & 1) != 0)
+        ONDEMAND_R::new(((self.bits >> 7) & 0x01) != 0)
     }
     #[doc = "Bit 8 - Chill Cycle Disable"]
     #[inline(always)]
     pub fn ccdis(&self) -> CCDIS_R {
-        CCDIS_R::new(((self.bits >> 8) & 1) != 0)
+        CCDIS_R::new(((self.bits >> 8) & 0x01) != 0)
     }
     #[doc = "Bit 9 - Quick Lock Disable"]
     #[inline(always)]
     pub fn qldis(&self) -> QLDIS_R {
-        QLDIS_R::new(((self.bits >> 9) & 1) != 0)
+        QLDIS_R::new(((self.bits >> 9) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bit 1 - Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn enable(&mut self) -> ENABLE_W<1> {
-        ENABLE_W::new(self)
+    pub fn enable(&mut self) -> ENABLE_W {
+        ENABLE_W { w: self }
     }
     #[doc = "Bit 2 - Mode Selection"]
     #[inline(always)]
-    #[must_use]
-    pub fn mode(&mut self) -> MODE_W<2> {
-        MODE_W::new(self)
+    pub fn mode(&mut self) -> MODE_W {
+        MODE_W { w: self }
     }
     #[doc = "Bit 3 - Stable Frequency"]
     #[inline(always)]
-    #[must_use]
-    pub fn stable(&mut self) -> STABLE_W<3> {
-        STABLE_W::new(self)
+    pub fn stable(&mut self) -> STABLE_W {
+        STABLE_W { w: self }
     }
     #[doc = "Bit 4 - Lose Lock After Wake"]
     #[inline(always)]
-    #[must_use]
-    pub fn llaw(&mut self) -> LLAW_W<4> {
-        LLAW_W::new(self)
+    pub fn llaw(&mut self) -> LLAW_W {
+        LLAW_W { w: self }
     }
     #[doc = "Bit 6 - Run during Standby"]
     #[inline(always)]
-    #[must_use]
-    pub fn runstdby(&mut self) -> RUNSTDBY_W<6> {
-        RUNSTDBY_W::new(self)
+    pub fn runstdby(&mut self) -> RUNSTDBY_W {
+        RUNSTDBY_W { w: self }
     }
     #[doc = "Bit 7 - Enable on Demand"]
     #[inline(always)]
-    #[must_use]
-    pub fn ondemand(&mut self) -> ONDEMAND_W<7> {
-        ONDEMAND_W::new(self)
+    pub fn ondemand(&mut self) -> ONDEMAND_W {
+        ONDEMAND_W { w: self }
     }
     #[doc = "Bit 8 - Chill Cycle Disable"]
     #[inline(always)]
-    #[must_use]
-    pub fn ccdis(&mut self) -> CCDIS_W<8> {
-        CCDIS_W::new(self)
+    pub fn ccdis(&mut self) -> CCDIS_W {
+        CCDIS_W { w: self }
     }
     #[doc = "Bit 9 - Quick Lock Disable"]
     #[inline(always)]
-    #[must_use]
-    pub fn qldis(&mut self) -> QLDIS_W<9> {
-        QLDIS_W::new(self)
+    pub fn qldis(&mut self) -> QLDIS_W {
+        QLDIS_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -176,10 +432,11 @@ impl crate::Readable for DFLLCTRL_SPEC {
 #[doc = "`write(|w| ..)` method takes [dfllctrl::W](W) writer structure"]
 impl crate::Writable for DFLLCTRL_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets DFLLCTRL to value 0x80"]
 impl crate::Resettable for DFLLCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0x80;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0x80
+    }
 }

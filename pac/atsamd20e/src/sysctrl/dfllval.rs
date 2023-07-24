@@ -35,15 +35,74 @@ impl From<crate::W<DFLLVAL_SPEC>> for W {
     }
 }
 #[doc = "Field `FINE` reader - Fine Calibration Value"]
-pub type FINE_R = crate::FieldReader<u16>;
+pub struct FINE_R(crate::FieldReader<u16, u16>);
+impl FINE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u16) -> Self {
+        FINE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FINE_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `FINE` writer - Fine Calibration Value"]
-pub type FINE_W<'a, const O: u8> = crate::FieldWriter<'a, DFLLVAL_SPEC, 10, O, u16>;
+pub struct FINE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> FINE_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u16) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x03ff) | (value as u32 & 0x03ff);
+        self.w
+    }
+}
 #[doc = "Field `COARSE` reader - Coarse Calibration Value"]
-pub type COARSE_R = crate::FieldReader;
+pub struct COARSE_R(crate::FieldReader<u8, u8>);
+impl COARSE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        COARSE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for COARSE_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `COARSE` writer - Coarse Calibration Value"]
-pub type COARSE_W<'a, const O: u8> = crate::FieldWriter<'a, DFLLVAL_SPEC, 6, O>;
+pub struct COARSE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> COARSE_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x3f << 10)) | ((value as u32 & 0x3f) << 10);
+        self.w
+    }
+}
 #[doc = "Field `DIFF` reader - Multiplication Ratio Difference"]
-pub type DIFF_R = crate::FieldReader<u16>;
+pub struct DIFF_R(crate::FieldReader<u16, u16>);
+impl DIFF_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u16) -> Self {
+        DIFF_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DIFF_R {
+    type Target = crate::FieldReader<u16, u16>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 impl R {
     #[doc = "Bits 0:9 - Fine Calibration Value"]
     #[inline(always)]
@@ -64,15 +123,13 @@ impl R {
 impl W {
     #[doc = "Bits 0:9 - Fine Calibration Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn fine(&mut self) -> FINE_W<0> {
-        FINE_W::new(self)
+    pub fn fine(&mut self) -> FINE_W {
+        FINE_W { w: self }
     }
     #[doc = "Bits 10:15 - Coarse Calibration Value"]
     #[inline(always)]
-    #[must_use]
-    pub fn coarse(&mut self) -> COARSE_W<10> {
-        COARSE_W::new(self)
+    pub fn coarse(&mut self) -> COARSE_W {
+        COARSE_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -93,10 +150,11 @@ impl crate::Readable for DFLLVAL_SPEC {
 #[doc = "`write(|w| ..)` method takes [dfllval::W](W) writer structure"]
 impl crate::Writable for DFLLVAL_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets DFLLVAL to value 0"]
 impl crate::Resettable for DFLLVAL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

@@ -34,12 +34,10 @@ impl From<crate::W<CLKCTRL_SPEC>> for W {
         W(writer)
     }
 }
-#[doc = "Field `ID` reader - Generic Clock Selection ID"]
-pub type ID_R = crate::FieldReader<IDSELECT_A>;
 #[doc = "Generic Clock Selection ID\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
-pub enum IDSELECT_A {
+pub enum ID_A {
     #[doc = "0: DFLL48M Reference"]
     DFLL48M = 0,
     #[doc = "1: WDT"]
@@ -95,331 +93,352 @@ pub enum IDSELECT_A {
     #[doc = "26: DAC"]
     DAC = 26,
 }
-impl From<IDSELECT_A> for u8 {
+impl From<ID_A> for u8 {
     #[inline(always)]
-    fn from(variant: IDSELECT_A) -> Self {
+    fn from(variant: ID_A) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for IDSELECT_A {
-    type Ux = u8;
-}
+#[doc = "Field `ID` reader - Generic Clock Selection ID"]
+pub struct ID_R(crate::FieldReader<u8, ID_A>);
 impl ID_R {
-    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<IDSELECT_A> {
+    pub(crate) fn new(bits: u8) -> Self {
+        ID_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<ID_A> {
         match self.bits {
-            0 => Some(IDSELECT_A::DFLL48M),
-            1 => Some(IDSELECT_A::WDT),
-            2 => Some(IDSELECT_A::RTC),
-            3 => Some(IDSELECT_A::EIC),
-            4 => Some(IDSELECT_A::EVSYS_CHANNEL_0),
-            5 => Some(IDSELECT_A::EVSYS_CHANNEL_1),
-            6 => Some(IDSELECT_A::EVSYS_CHANNEL_2),
-            7 => Some(IDSELECT_A::EVSYS_CHANNEL_3),
-            8 => Some(IDSELECT_A::EVSYS_CHANNEL_4),
-            9 => Some(IDSELECT_A::EVSYS_CHANNEL_5),
-            10 => Some(IDSELECT_A::EVSYS_CHANNEL_6),
-            11 => Some(IDSELECT_A::EVSYS_CHANNEL_7),
-            12 => Some(IDSELECT_A::SERCOMX_SLOW),
-            13 => Some(IDSELECT_A::SERCOM0_CORE),
-            14 => Some(IDSELECT_A::SERCOM1_CORE),
-            15 => Some(IDSELECT_A::SERCOM2_CORE),
-            16 => Some(IDSELECT_A::SERCOM3_CORE),
-            17 => Some(IDSELECT_A::SERCOM4_CORE),
-            18 => Some(IDSELECT_A::SERCOM5_CORE),
-            19 => Some(IDSELECT_A::TC0_TC1),
-            20 => Some(IDSELECT_A::TC2_TC3),
-            21 => Some(IDSELECT_A::TC4_TC5),
-            22 => Some(IDSELECT_A::TC6_TC7),
-            23 => Some(IDSELECT_A::ADC),
-            24 => Some(IDSELECT_A::AC_DIG),
-            25 => Some(IDSELECT_A::AC_ANA),
-            26 => Some(IDSELECT_A::DAC),
+            0 => Some(ID_A::DFLL48M),
+            1 => Some(ID_A::WDT),
+            2 => Some(ID_A::RTC),
+            3 => Some(ID_A::EIC),
+            4 => Some(ID_A::EVSYS_CHANNEL_0),
+            5 => Some(ID_A::EVSYS_CHANNEL_1),
+            6 => Some(ID_A::EVSYS_CHANNEL_2),
+            7 => Some(ID_A::EVSYS_CHANNEL_3),
+            8 => Some(ID_A::EVSYS_CHANNEL_4),
+            9 => Some(ID_A::EVSYS_CHANNEL_5),
+            10 => Some(ID_A::EVSYS_CHANNEL_6),
+            11 => Some(ID_A::EVSYS_CHANNEL_7),
+            12 => Some(ID_A::SERCOMX_SLOW),
+            13 => Some(ID_A::SERCOM0_CORE),
+            14 => Some(ID_A::SERCOM1_CORE),
+            15 => Some(ID_A::SERCOM2_CORE),
+            16 => Some(ID_A::SERCOM3_CORE),
+            17 => Some(ID_A::SERCOM4_CORE),
+            18 => Some(ID_A::SERCOM5_CORE),
+            19 => Some(ID_A::TC0_TC1),
+            20 => Some(ID_A::TC2_TC3),
+            21 => Some(ID_A::TC4_TC5),
+            22 => Some(ID_A::TC6_TC7),
+            23 => Some(ID_A::ADC),
+            24 => Some(ID_A::AC_DIG),
+            25 => Some(ID_A::AC_ANA),
+            26 => Some(ID_A::DAC),
             _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `DFLL48M`"]
     #[inline(always)]
     pub fn is_dfll48m(&self) -> bool {
-        *self == IDSELECT_A::DFLL48M
+        **self == ID_A::DFLL48M
     }
     #[doc = "Checks if the value of the field is `WDT`"]
     #[inline(always)]
     pub fn is_wdt(&self) -> bool {
-        *self == IDSELECT_A::WDT
+        **self == ID_A::WDT
     }
     #[doc = "Checks if the value of the field is `RTC`"]
     #[inline(always)]
     pub fn is_rtc(&self) -> bool {
-        *self == IDSELECT_A::RTC
+        **self == ID_A::RTC
     }
     #[doc = "Checks if the value of the field is `EIC`"]
     #[inline(always)]
     pub fn is_eic(&self) -> bool {
-        *self == IDSELECT_A::EIC
+        **self == ID_A::EIC
     }
     #[doc = "Checks if the value of the field is `EVSYS_CHANNEL_0`"]
     #[inline(always)]
     pub fn is_evsys_channel_0(&self) -> bool {
-        *self == IDSELECT_A::EVSYS_CHANNEL_0
+        **self == ID_A::EVSYS_CHANNEL_0
     }
     #[doc = "Checks if the value of the field is `EVSYS_CHANNEL_1`"]
     #[inline(always)]
     pub fn is_evsys_channel_1(&self) -> bool {
-        *self == IDSELECT_A::EVSYS_CHANNEL_1
+        **self == ID_A::EVSYS_CHANNEL_1
     }
     #[doc = "Checks if the value of the field is `EVSYS_CHANNEL_2`"]
     #[inline(always)]
     pub fn is_evsys_channel_2(&self) -> bool {
-        *self == IDSELECT_A::EVSYS_CHANNEL_2
+        **self == ID_A::EVSYS_CHANNEL_2
     }
     #[doc = "Checks if the value of the field is `EVSYS_CHANNEL_3`"]
     #[inline(always)]
     pub fn is_evsys_channel_3(&self) -> bool {
-        *self == IDSELECT_A::EVSYS_CHANNEL_3
+        **self == ID_A::EVSYS_CHANNEL_3
     }
     #[doc = "Checks if the value of the field is `EVSYS_CHANNEL_4`"]
     #[inline(always)]
     pub fn is_evsys_channel_4(&self) -> bool {
-        *self == IDSELECT_A::EVSYS_CHANNEL_4
+        **self == ID_A::EVSYS_CHANNEL_4
     }
     #[doc = "Checks if the value of the field is `EVSYS_CHANNEL_5`"]
     #[inline(always)]
     pub fn is_evsys_channel_5(&self) -> bool {
-        *self == IDSELECT_A::EVSYS_CHANNEL_5
+        **self == ID_A::EVSYS_CHANNEL_5
     }
     #[doc = "Checks if the value of the field is `EVSYS_CHANNEL_6`"]
     #[inline(always)]
     pub fn is_evsys_channel_6(&self) -> bool {
-        *self == IDSELECT_A::EVSYS_CHANNEL_6
+        **self == ID_A::EVSYS_CHANNEL_6
     }
     #[doc = "Checks if the value of the field is `EVSYS_CHANNEL_7`"]
     #[inline(always)]
     pub fn is_evsys_channel_7(&self) -> bool {
-        *self == IDSELECT_A::EVSYS_CHANNEL_7
+        **self == ID_A::EVSYS_CHANNEL_7
     }
     #[doc = "Checks if the value of the field is `SERCOMX_SLOW`"]
     #[inline(always)]
     pub fn is_sercomx_slow(&self) -> bool {
-        *self == IDSELECT_A::SERCOMX_SLOW
+        **self == ID_A::SERCOMX_SLOW
     }
     #[doc = "Checks if the value of the field is `SERCOM0_CORE`"]
     #[inline(always)]
     pub fn is_sercom0_core(&self) -> bool {
-        *self == IDSELECT_A::SERCOM0_CORE
+        **self == ID_A::SERCOM0_CORE
     }
     #[doc = "Checks if the value of the field is `SERCOM1_CORE`"]
     #[inline(always)]
     pub fn is_sercom1_core(&self) -> bool {
-        *self == IDSELECT_A::SERCOM1_CORE
+        **self == ID_A::SERCOM1_CORE
     }
     #[doc = "Checks if the value of the field is `SERCOM2_CORE`"]
     #[inline(always)]
     pub fn is_sercom2_core(&self) -> bool {
-        *self == IDSELECT_A::SERCOM2_CORE
+        **self == ID_A::SERCOM2_CORE
     }
     #[doc = "Checks if the value of the field is `SERCOM3_CORE`"]
     #[inline(always)]
     pub fn is_sercom3_core(&self) -> bool {
-        *self == IDSELECT_A::SERCOM3_CORE
+        **self == ID_A::SERCOM3_CORE
     }
     #[doc = "Checks if the value of the field is `SERCOM4_CORE`"]
     #[inline(always)]
     pub fn is_sercom4_core(&self) -> bool {
-        *self == IDSELECT_A::SERCOM4_CORE
+        **self == ID_A::SERCOM4_CORE
     }
     #[doc = "Checks if the value of the field is `SERCOM5_CORE`"]
     #[inline(always)]
     pub fn is_sercom5_core(&self) -> bool {
-        *self == IDSELECT_A::SERCOM5_CORE
+        **self == ID_A::SERCOM5_CORE
     }
     #[doc = "Checks if the value of the field is `TC0_TC1`"]
     #[inline(always)]
     pub fn is_tc0_tc1(&self) -> bool {
-        *self == IDSELECT_A::TC0_TC1
+        **self == ID_A::TC0_TC1
     }
     #[doc = "Checks if the value of the field is `TC2_TC3`"]
     #[inline(always)]
     pub fn is_tc2_tc3(&self) -> bool {
-        *self == IDSELECT_A::TC2_TC3
+        **self == ID_A::TC2_TC3
     }
     #[doc = "Checks if the value of the field is `TC4_TC5`"]
     #[inline(always)]
     pub fn is_tc4_tc5(&self) -> bool {
-        *self == IDSELECT_A::TC4_TC5
+        **self == ID_A::TC4_TC5
     }
     #[doc = "Checks if the value of the field is `TC6_TC7`"]
     #[inline(always)]
     pub fn is_tc6_tc7(&self) -> bool {
-        *self == IDSELECT_A::TC6_TC7
+        **self == ID_A::TC6_TC7
     }
     #[doc = "Checks if the value of the field is `ADC`"]
     #[inline(always)]
     pub fn is_adc(&self) -> bool {
-        *self == IDSELECT_A::ADC
+        **self == ID_A::ADC
     }
     #[doc = "Checks if the value of the field is `AC_DIG`"]
     #[inline(always)]
     pub fn is_ac_dig(&self) -> bool {
-        *self == IDSELECT_A::AC_DIG
+        **self == ID_A::AC_DIG
     }
     #[doc = "Checks if the value of the field is `AC_ANA`"]
     #[inline(always)]
     pub fn is_ac_ana(&self) -> bool {
-        *self == IDSELECT_A::AC_ANA
+        **self == ID_A::AC_ANA
     }
     #[doc = "Checks if the value of the field is `DAC`"]
     #[inline(always)]
     pub fn is_dac(&self) -> bool {
-        *self == IDSELECT_A::DAC
+        **self == ID_A::DAC
+    }
+}
+impl core::ops::Deref for ID_R {
+    type Target = crate::FieldReader<u8, ID_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Field `ID` writer - Generic Clock Selection ID"]
-pub type ID_W<'a, const O: u8> = crate::FieldWriter<'a, CLKCTRL_SPEC, 6, O, IDSELECT_A>;
-impl<'a, const O: u8> ID_W<'a, O> {
+pub struct ID_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> ID_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: ID_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
     #[doc = "DFLL48M Reference"]
     #[inline(always)]
     pub fn dfll48m(self) -> &'a mut W {
-        self.variant(IDSELECT_A::DFLL48M)
+        self.variant(ID_A::DFLL48M)
     }
     #[doc = "WDT"]
     #[inline(always)]
     pub fn wdt(self) -> &'a mut W {
-        self.variant(IDSELECT_A::WDT)
+        self.variant(ID_A::WDT)
     }
     #[doc = "RTC"]
     #[inline(always)]
     pub fn rtc(self) -> &'a mut W {
-        self.variant(IDSELECT_A::RTC)
+        self.variant(ID_A::RTC)
     }
     #[doc = "EIC"]
     #[inline(always)]
     pub fn eic(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EIC)
+        self.variant(ID_A::EIC)
     }
     #[doc = "EVSYS_CHANNEL_0"]
     #[inline(always)]
     pub fn evsys_channel_0(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EVSYS_CHANNEL_0)
+        self.variant(ID_A::EVSYS_CHANNEL_0)
     }
     #[doc = "EVSYS_CHANNEL_1"]
     #[inline(always)]
     pub fn evsys_channel_1(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EVSYS_CHANNEL_1)
+        self.variant(ID_A::EVSYS_CHANNEL_1)
     }
     #[doc = "EVSYS_CHANNEL_2"]
     #[inline(always)]
     pub fn evsys_channel_2(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EVSYS_CHANNEL_2)
+        self.variant(ID_A::EVSYS_CHANNEL_2)
     }
     #[doc = "EVSYS_CHANNEL_3"]
     #[inline(always)]
     pub fn evsys_channel_3(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EVSYS_CHANNEL_3)
+        self.variant(ID_A::EVSYS_CHANNEL_3)
     }
     #[doc = "EVSYS_CHANNEL_4"]
     #[inline(always)]
     pub fn evsys_channel_4(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EVSYS_CHANNEL_4)
+        self.variant(ID_A::EVSYS_CHANNEL_4)
     }
     #[doc = "EVSYS_CHANNEL_5"]
     #[inline(always)]
     pub fn evsys_channel_5(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EVSYS_CHANNEL_5)
+        self.variant(ID_A::EVSYS_CHANNEL_5)
     }
     #[doc = "EVSYS_CHANNEL_6"]
     #[inline(always)]
     pub fn evsys_channel_6(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EVSYS_CHANNEL_6)
+        self.variant(ID_A::EVSYS_CHANNEL_6)
     }
     #[doc = "EVSYS_CHANNEL_7"]
     #[inline(always)]
     pub fn evsys_channel_7(self) -> &'a mut W {
-        self.variant(IDSELECT_A::EVSYS_CHANNEL_7)
+        self.variant(ID_A::EVSYS_CHANNEL_7)
     }
     #[doc = "SERCOMx_SLOW"]
     #[inline(always)]
     pub fn sercomx_slow(self) -> &'a mut W {
-        self.variant(IDSELECT_A::SERCOMX_SLOW)
+        self.variant(ID_A::SERCOMX_SLOW)
     }
     #[doc = "SERCOM0_CORE"]
     #[inline(always)]
     pub fn sercom0_core(self) -> &'a mut W {
-        self.variant(IDSELECT_A::SERCOM0_CORE)
+        self.variant(ID_A::SERCOM0_CORE)
     }
     #[doc = "SERCOM1_CORE"]
     #[inline(always)]
     pub fn sercom1_core(self) -> &'a mut W {
-        self.variant(IDSELECT_A::SERCOM1_CORE)
+        self.variant(ID_A::SERCOM1_CORE)
     }
     #[doc = "SERCOM2_CORE"]
     #[inline(always)]
     pub fn sercom2_core(self) -> &'a mut W {
-        self.variant(IDSELECT_A::SERCOM2_CORE)
+        self.variant(ID_A::SERCOM2_CORE)
     }
     #[doc = "SERCOM3_CORE"]
     #[inline(always)]
     pub fn sercom3_core(self) -> &'a mut W {
-        self.variant(IDSELECT_A::SERCOM3_CORE)
+        self.variant(ID_A::SERCOM3_CORE)
     }
     #[doc = "SERCOM4_CORE"]
     #[inline(always)]
     pub fn sercom4_core(self) -> &'a mut W {
-        self.variant(IDSELECT_A::SERCOM4_CORE)
+        self.variant(ID_A::SERCOM4_CORE)
     }
     #[doc = "SERCOM5_CORE"]
     #[inline(always)]
     pub fn sercom5_core(self) -> &'a mut W {
-        self.variant(IDSELECT_A::SERCOM5_CORE)
+        self.variant(ID_A::SERCOM5_CORE)
     }
     #[doc = "TC0,TC1"]
     #[inline(always)]
     pub fn tc0_tc1(self) -> &'a mut W {
-        self.variant(IDSELECT_A::TC0_TC1)
+        self.variant(ID_A::TC0_TC1)
     }
     #[doc = "TC2,TC3"]
     #[inline(always)]
     pub fn tc2_tc3(self) -> &'a mut W {
-        self.variant(IDSELECT_A::TC2_TC3)
+        self.variant(ID_A::TC2_TC3)
     }
     #[doc = "TC4,TC5"]
     #[inline(always)]
     pub fn tc4_tc5(self) -> &'a mut W {
-        self.variant(IDSELECT_A::TC4_TC5)
+        self.variant(ID_A::TC4_TC5)
     }
     #[doc = "TC6,TC7"]
     #[inline(always)]
     pub fn tc6_tc7(self) -> &'a mut W {
-        self.variant(IDSELECT_A::TC6_TC7)
+        self.variant(ID_A::TC6_TC7)
     }
     #[doc = "ADC"]
     #[inline(always)]
     pub fn adc(self) -> &'a mut W {
-        self.variant(IDSELECT_A::ADC)
+        self.variant(ID_A::ADC)
     }
     #[doc = "AC_DIG"]
     #[inline(always)]
     pub fn ac_dig(self) -> &'a mut W {
-        self.variant(IDSELECT_A::AC_DIG)
+        self.variant(ID_A::AC_DIG)
     }
     #[doc = "AC_ANA"]
     #[inline(always)]
     pub fn ac_ana(self) -> &'a mut W {
-        self.variant(IDSELECT_A::AC_ANA)
+        self.variant(ID_A::AC_ANA)
     }
     #[doc = "DAC"]
     #[inline(always)]
     pub fn dac(self) -> &'a mut W {
-        self.variant(IDSELECT_A::DAC)
+        self.variant(ID_A::DAC)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x3f) | (value as u16 & 0x3f);
+        self.w
     }
 }
-#[doc = "Field `GEN` reader - Generic Clock Generator"]
-pub type GEN_R = crate::FieldReader<GENSELECT_A>;
 #[doc = "Generic Clock Generator\n\nValue on reset: 0"]
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 #[repr(u8)]
-pub enum GENSELECT_A {
+pub enum GEN_A {
     #[doc = "0: Generic clock generator 0"]
     GCLK0 = 0,
     #[doc = "1: Generic clock generator 1"]
@@ -437,124 +456,213 @@ pub enum GENSELECT_A {
     #[doc = "7: Generic clock generator 7"]
     GCLK7 = 7,
 }
-impl From<GENSELECT_A> for u8 {
+impl From<GEN_A> for u8 {
     #[inline(always)]
-    fn from(variant: GENSELECT_A) -> Self {
+    fn from(variant: GEN_A) -> Self {
         variant as _
     }
 }
-impl crate::FieldSpec for GENSELECT_A {
-    type Ux = u8;
-}
+#[doc = "Field `GEN` reader - Generic Clock Generator"]
+pub struct GEN_R(crate::FieldReader<u8, GEN_A>);
 impl GEN_R {
-    #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<GENSELECT_A> {
+    pub(crate) fn new(bits: u8) -> Self {
+        GEN_R(crate::FieldReader::new(bits))
+    }
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> Option<GEN_A> {
         match self.bits {
-            0 => Some(GENSELECT_A::GCLK0),
-            1 => Some(GENSELECT_A::GCLK1),
-            2 => Some(GENSELECT_A::GCLK2),
-            3 => Some(GENSELECT_A::GCLK3),
-            4 => Some(GENSELECT_A::GCLK4),
-            5 => Some(GENSELECT_A::GCLK5),
-            6 => Some(GENSELECT_A::GCLK6),
-            7 => Some(GENSELECT_A::GCLK7),
+            0 => Some(GEN_A::GCLK0),
+            1 => Some(GEN_A::GCLK1),
+            2 => Some(GEN_A::GCLK2),
+            3 => Some(GEN_A::GCLK3),
+            4 => Some(GEN_A::GCLK4),
+            5 => Some(GEN_A::GCLK5),
+            6 => Some(GEN_A::GCLK6),
+            7 => Some(GEN_A::GCLK7),
             _ => None,
         }
     }
     #[doc = "Checks if the value of the field is `GCLK0`"]
     #[inline(always)]
     pub fn is_gclk0(&self) -> bool {
-        *self == GENSELECT_A::GCLK0
+        **self == GEN_A::GCLK0
     }
     #[doc = "Checks if the value of the field is `GCLK1`"]
     #[inline(always)]
     pub fn is_gclk1(&self) -> bool {
-        *self == GENSELECT_A::GCLK1
+        **self == GEN_A::GCLK1
     }
     #[doc = "Checks if the value of the field is `GCLK2`"]
     #[inline(always)]
     pub fn is_gclk2(&self) -> bool {
-        *self == GENSELECT_A::GCLK2
+        **self == GEN_A::GCLK2
     }
     #[doc = "Checks if the value of the field is `GCLK3`"]
     #[inline(always)]
     pub fn is_gclk3(&self) -> bool {
-        *self == GENSELECT_A::GCLK3
+        **self == GEN_A::GCLK3
     }
     #[doc = "Checks if the value of the field is `GCLK4`"]
     #[inline(always)]
     pub fn is_gclk4(&self) -> bool {
-        *self == GENSELECT_A::GCLK4
+        **self == GEN_A::GCLK4
     }
     #[doc = "Checks if the value of the field is `GCLK5`"]
     #[inline(always)]
     pub fn is_gclk5(&self) -> bool {
-        *self == GENSELECT_A::GCLK5
+        **self == GEN_A::GCLK5
     }
     #[doc = "Checks if the value of the field is `GCLK6`"]
     #[inline(always)]
     pub fn is_gclk6(&self) -> bool {
-        *self == GENSELECT_A::GCLK6
+        **self == GEN_A::GCLK6
     }
     #[doc = "Checks if the value of the field is `GCLK7`"]
     #[inline(always)]
     pub fn is_gclk7(&self) -> bool {
-        *self == GENSELECT_A::GCLK7
+        **self == GEN_A::GCLK7
+    }
+}
+impl core::ops::Deref for GEN_R {
+    type Target = crate::FieldReader<u8, GEN_A>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
     }
 }
 #[doc = "Field `GEN` writer - Generic Clock Generator"]
-pub type GEN_W<'a, const O: u8> = crate::FieldWriter<'a, CLKCTRL_SPEC, 4, O, GENSELECT_A>;
-impl<'a, const O: u8> GEN_W<'a, O> {
+pub struct GEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> GEN_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: GEN_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
+    }
     #[doc = "Generic clock generator 0"]
     #[inline(always)]
     pub fn gclk0(self) -> &'a mut W {
-        self.variant(GENSELECT_A::GCLK0)
+        self.variant(GEN_A::GCLK0)
     }
     #[doc = "Generic clock generator 1"]
     #[inline(always)]
     pub fn gclk1(self) -> &'a mut W {
-        self.variant(GENSELECT_A::GCLK1)
+        self.variant(GEN_A::GCLK1)
     }
     #[doc = "Generic clock generator 2"]
     #[inline(always)]
     pub fn gclk2(self) -> &'a mut W {
-        self.variant(GENSELECT_A::GCLK2)
+        self.variant(GEN_A::GCLK2)
     }
     #[doc = "Generic clock generator 3"]
     #[inline(always)]
     pub fn gclk3(self) -> &'a mut W {
-        self.variant(GENSELECT_A::GCLK3)
+        self.variant(GEN_A::GCLK3)
     }
     #[doc = "Generic clock generator 4"]
     #[inline(always)]
     pub fn gclk4(self) -> &'a mut W {
-        self.variant(GENSELECT_A::GCLK4)
+        self.variant(GEN_A::GCLK4)
     }
     #[doc = "Generic clock generator 5"]
     #[inline(always)]
     pub fn gclk5(self) -> &'a mut W {
-        self.variant(GENSELECT_A::GCLK5)
+        self.variant(GEN_A::GCLK5)
     }
     #[doc = "Generic clock generator 6"]
     #[inline(always)]
     pub fn gclk6(self) -> &'a mut W {
-        self.variant(GENSELECT_A::GCLK6)
+        self.variant(GEN_A::GCLK6)
     }
     #[doc = "Generic clock generator 7"]
     #[inline(always)]
     pub fn gclk7(self) -> &'a mut W {
-        self.variant(GENSELECT_A::GCLK7)
+        self.variant(GEN_A::GCLK7)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x0f << 8)) | ((value as u16 & 0x0f) << 8);
+        self.w
     }
 }
 #[doc = "Field `CLKEN` reader - Clock Enable"]
-pub type CLKEN_R = crate::BitReader;
+pub struct CLKEN_R(crate::FieldReader<bool, bool>);
+impl CLKEN_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        CLKEN_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CLKEN_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `CLKEN` writer - Clock Enable"]
-pub type CLKEN_W<'a, const O: u8> = crate::BitWriter<'a, CLKCTRL_SPEC, O>;
+pub struct CLKEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CLKEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 14)) | ((value as u16 & 0x01) << 14);
+        self.w
+    }
+}
 #[doc = "Field `WRTLOCK` reader - Write Lock"]
-pub type WRTLOCK_R = crate::BitReader;
+pub struct WRTLOCK_R(crate::FieldReader<bool, bool>);
+impl WRTLOCK_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        WRTLOCK_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for WRTLOCK_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `WRTLOCK` writer - Write Lock"]
-pub type WRTLOCK_W<'a, const O: u8> = crate::BitWriter<'a, CLKCTRL_SPEC, O>;
+pub struct WRTLOCK_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> WRTLOCK_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 15)) | ((value as u16 & 0x01) << 15);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:5 - Generic Clock Selection ID"]
     #[inline(always)]
@@ -569,38 +677,34 @@ impl R {
     #[doc = "Bit 14 - Clock Enable"]
     #[inline(always)]
     pub fn clken(&self) -> CLKEN_R {
-        CLKEN_R::new(((self.bits >> 14) & 1) != 0)
+        CLKEN_R::new(((self.bits >> 14) & 0x01) != 0)
     }
     #[doc = "Bit 15 - Write Lock"]
     #[inline(always)]
     pub fn wrtlock(&self) -> WRTLOCK_R {
-        WRTLOCK_R::new(((self.bits >> 15) & 1) != 0)
+        WRTLOCK_R::new(((self.bits >> 15) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bits 0:5 - Generic Clock Selection ID"]
     #[inline(always)]
-    #[must_use]
-    pub fn id(&mut self) -> ID_W<0> {
-        ID_W::new(self)
+    pub fn id(&mut self) -> ID_W {
+        ID_W { w: self }
     }
     #[doc = "Bits 8:11 - Generic Clock Generator"]
     #[inline(always)]
-    #[must_use]
-    pub fn gen(&mut self) -> GEN_W<8> {
-        GEN_W::new(self)
+    pub fn gen(&mut self) -> GEN_W {
+        GEN_W { w: self }
     }
     #[doc = "Bit 14 - Clock Enable"]
     #[inline(always)]
-    #[must_use]
-    pub fn clken(&mut self) -> CLKEN_W<14> {
-        CLKEN_W::new(self)
+    pub fn clken(&mut self) -> CLKEN_W {
+        CLKEN_W { w: self }
     }
     #[doc = "Bit 15 - Write Lock"]
     #[inline(always)]
-    #[must_use]
-    pub fn wrtlock(&mut self) -> WRTLOCK_W<15> {
-        WRTLOCK_W::new(self)
+    pub fn wrtlock(&mut self) -> WRTLOCK_W {
+        WRTLOCK_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -621,10 +725,11 @@ impl crate::Readable for CLKCTRL_SPEC {
 #[doc = "`write(|w| ..)` method takes [clkctrl::W](W) writer structure"]
 impl crate::Writable for CLKCTRL_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets CLKCTRL to value 0"]
 impl crate::Resettable for CLKCTRL_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

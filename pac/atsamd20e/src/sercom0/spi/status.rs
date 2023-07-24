@@ -35,29 +35,74 @@ impl From<crate::W<STATUS_SPEC>> for W {
     }
 }
 #[doc = "Field `BUFOVF` reader - Buffer Overflow"]
-pub type BUFOVF_R = crate::BitReader;
+pub struct BUFOVF_R(crate::FieldReader<bool, bool>);
+impl BUFOVF_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        BUFOVF_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BUFOVF_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `BUFOVF` writer - Buffer Overflow"]
-pub type BUFOVF_W<'a, const O: u8> = crate::BitWriter<'a, STATUS_SPEC, O>;
+pub struct BUFOVF_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> BUFOVF_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u16 & 0x01) << 2);
+        self.w
+    }
+}
 #[doc = "Field `SYNCBUSY` reader - Synchronization Busy"]
-pub type SYNCBUSY_R = crate::BitReader;
+pub struct SYNCBUSY_R(crate::FieldReader<bool, bool>);
+impl SYNCBUSY_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        SYNCBUSY_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for SYNCBUSY_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 impl R {
     #[doc = "Bit 2 - Buffer Overflow"]
     #[inline(always)]
     pub fn bufovf(&self) -> BUFOVF_R {
-        BUFOVF_R::new(((self.bits >> 2) & 1) != 0)
+        BUFOVF_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 15 - Synchronization Busy"]
     #[inline(always)]
     pub fn syncbusy(&self) -> SYNCBUSY_R {
-        SYNCBUSY_R::new(((self.bits >> 15) & 1) != 0)
+        SYNCBUSY_R::new(((self.bits >> 15) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bit 2 - Buffer Overflow"]
     #[inline(always)]
-    #[must_use]
-    pub fn bufovf(&mut self) -> BUFOVF_W<2> {
-        BUFOVF_W::new(self)
+    pub fn bufovf(&mut self) -> BUFOVF_W {
+        BUFOVF_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -78,10 +123,11 @@ impl crate::Readable for STATUS_SPEC {
 #[doc = "`write(|w| ..)` method takes [status::W](W) writer structure"]
 impl crate::Writable for STATUS_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets STATUS to value 0"]
 impl crate::Resettable for STATUS_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

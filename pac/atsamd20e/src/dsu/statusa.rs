@@ -35,82 +35,242 @@ impl From<crate::W<STATUSA_SPEC>> for W {
     }
 }
 #[doc = "Field `DONE` reader - Done"]
-pub type DONE_R = crate::BitReader;
+pub struct DONE_R(crate::FieldReader<bool, bool>);
+impl DONE_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        DONE_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for DONE_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `DONE` writer - Done"]
-pub type DONE_W<'a, const O: u8> = crate::BitWriter<'a, STATUSA_SPEC, O>;
+pub struct DONE_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> DONE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | (value as u8 & 0x01);
+        self.w
+    }
+}
 #[doc = "Field `CRSTEXT` reader - CPU Reset Phase Extension"]
-pub type CRSTEXT_R = crate::BitReader;
+pub struct CRSTEXT_R(crate::FieldReader<bool, bool>);
+impl CRSTEXT_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        CRSTEXT_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for CRSTEXT_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `CRSTEXT` writer - CPU Reset Phase Extension"]
-pub type CRSTEXT_W<'a, const O: u8> = crate::BitWriter<'a, STATUSA_SPEC, O>;
+pub struct CRSTEXT_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CRSTEXT_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | ((value as u8 & 0x01) << 1);
+        self.w
+    }
+}
 #[doc = "Field `BERR` reader - Bus Error"]
-pub type BERR_R = crate::BitReader;
+pub struct BERR_R(crate::FieldReader<bool, bool>);
+impl BERR_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        BERR_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BERR_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `BERR` writer - Bus Error"]
-pub type BERR_W<'a, const O: u8> = crate::BitWriter<'a, STATUSA_SPEC, O>;
+pub struct BERR_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> BERR_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | ((value as u8 & 0x01) << 2);
+        self.w
+    }
+}
 #[doc = "Field `FAIL` reader - Failure"]
-pub type FAIL_R = crate::BitReader;
+pub struct FAIL_R(crate::FieldReader<bool, bool>);
+impl FAIL_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        FAIL_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for FAIL_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `FAIL` writer - Failure"]
-pub type FAIL_W<'a, const O: u8> = crate::BitWriter<'a, STATUSA_SPEC, O>;
+pub struct FAIL_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> FAIL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | ((value as u8 & 0x01) << 3);
+        self.w
+    }
+}
 #[doc = "Field `PERR` reader - Protection Error"]
-pub type PERR_R = crate::BitReader;
+pub struct PERR_R(crate::FieldReader<bool, bool>);
+impl PERR_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: bool) -> Self {
+        PERR_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for PERR_R {
+    type Target = crate::FieldReader<bool, bool>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `PERR` writer - Protection Error"]
-pub type PERR_W<'a, const O: u8> = crate::BitWriter<'a, STATUSA_SPEC, O>;
+pub struct PERR_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> PERR_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | ((value as u8 & 0x01) << 4);
+        self.w
+    }
+}
 impl R {
     #[doc = "Bit 0 - Done"]
     #[inline(always)]
     pub fn done(&self) -> DONE_R {
-        DONE_R::new((self.bits & 1) != 0)
+        DONE_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - CPU Reset Phase Extension"]
     #[inline(always)]
     pub fn crstext(&self) -> CRSTEXT_R {
-        CRSTEXT_R::new(((self.bits >> 1) & 1) != 0)
+        CRSTEXT_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Bus Error"]
     #[inline(always)]
     pub fn berr(&self) -> BERR_R {
-        BERR_R::new(((self.bits >> 2) & 1) != 0)
+        BERR_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3 - Failure"]
     #[inline(always)]
     pub fn fail(&self) -> FAIL_R {
-        FAIL_R::new(((self.bits >> 3) & 1) != 0)
+        FAIL_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4 - Protection Error"]
     #[inline(always)]
     pub fn perr(&self) -> PERR_R {
-        PERR_R::new(((self.bits >> 4) & 1) != 0)
+        PERR_R::new(((self.bits >> 4) & 0x01) != 0)
     }
 }
 impl W {
     #[doc = "Bit 0 - Done"]
     #[inline(always)]
-    #[must_use]
-    pub fn done(&mut self) -> DONE_W<0> {
-        DONE_W::new(self)
+    pub fn done(&mut self) -> DONE_W {
+        DONE_W { w: self }
     }
     #[doc = "Bit 1 - CPU Reset Phase Extension"]
     #[inline(always)]
-    #[must_use]
-    pub fn crstext(&mut self) -> CRSTEXT_W<1> {
-        CRSTEXT_W::new(self)
+    pub fn crstext(&mut self) -> CRSTEXT_W {
+        CRSTEXT_W { w: self }
     }
     #[doc = "Bit 2 - Bus Error"]
     #[inline(always)]
-    #[must_use]
-    pub fn berr(&mut self) -> BERR_W<2> {
-        BERR_W::new(self)
+    pub fn berr(&mut self) -> BERR_W {
+        BERR_W { w: self }
     }
     #[doc = "Bit 3 - Failure"]
     #[inline(always)]
-    #[must_use]
-    pub fn fail(&mut self) -> FAIL_W<3> {
-        FAIL_W::new(self)
+    pub fn fail(&mut self) -> FAIL_W {
+        FAIL_W { w: self }
     }
     #[doc = "Bit 4 - Protection Error"]
     #[inline(always)]
-    #[must_use]
-    pub fn perr(&mut self) -> PERR_W<4> {
-        PERR_W::new(self)
+    pub fn perr(&mut self) -> PERR_W {
+        PERR_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -131,10 +291,11 @@ impl crate::Readable for STATUSA_SPEC {
 #[doc = "`write(|w| ..)` method takes [statusa::W](W) writer structure"]
 impl crate::Writable for STATUSA_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets STATUSA to value 0"]
 impl crate::Resettable for STATUSA_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }

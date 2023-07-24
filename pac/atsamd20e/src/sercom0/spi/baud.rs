@@ -35,22 +35,44 @@ impl From<crate::W<BAUD_SPEC>> for W {
     }
 }
 #[doc = "Field `BAUD` reader - Baud Register"]
-pub type BAUD_R = crate::FieldReader;
+pub struct BAUD_R(crate::FieldReader<u8, u8>);
+impl BAUD_R {
+    #[inline(always)]
+    pub(crate) fn new(bits: u8) -> Self {
+        BAUD_R(crate::FieldReader::new(bits))
+    }
+}
+impl core::ops::Deref for BAUD_R {
+    type Target = crate::FieldReader<u8, u8>;
+    #[inline(always)]
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
 #[doc = "Field `BAUD` writer - Baud Register"]
-pub type BAUD_W<'a, const O: u8> = crate::FieldWriter<'a, BAUD_SPEC, 8, O>;
+pub struct BAUD_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> BAUD_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = value as u8;
+        self.w
+    }
+}
 impl R {
     #[doc = "Bits 0:7 - Baud Register"]
     #[inline(always)]
     pub fn baud(&self) -> BAUD_R {
-        BAUD_R::new(self.bits)
+        BAUD_R::new(self.bits as u8)
     }
 }
 impl W {
     #[doc = "Bits 0:7 - Baud Register"]
     #[inline(always)]
-    #[must_use]
-    pub fn baud(&mut self) -> BAUD_W<0> {
-        BAUD_W::new(self)
+    pub fn baud(&mut self) -> BAUD_W {
+        BAUD_W { w: self }
     }
     #[doc = "Writes raw bits to the register."]
     #[inline(always)]
@@ -71,10 +93,11 @@ impl crate::Readable for BAUD_SPEC {
 #[doc = "`write(|w| ..)` method takes [baud::W](W) writer structure"]
 impl crate::Writable for BAUD_SPEC {
     type Writer = W;
-    const ZERO_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
-    const ONE_TO_MODIFY_FIELDS_BITMAP: Self::Ux = 0;
 }
 #[doc = "`reset()` method sets BAUD to value 0"]
 impl crate::Resettable for BAUD_SPEC {
-    const RESET_VALUE: Self::Ux = 0;
+    #[inline(always)]
+    fn reset_value() -> Self::Ux {
+        0
+    }
 }
