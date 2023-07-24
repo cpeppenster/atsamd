@@ -163,7 +163,7 @@ impl GenericClockController {
         let mut state = State { gclk };
 
         set_flash_to_half_auto_wait_state(nvmctrl);
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         set_flash_manual_write(nvmctrl);
         enable_gclk_apb(pm);
         if use_external_crystal {
@@ -226,11 +226,11 @@ impl GenericClockController {
         let mut state = State { gclk };
 
         // No wait states needed <= 24 MHz @ 3.3v (ref. 37.12 NVM characteristics)
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         set_flash_manual_write(nvmctrl);
 
         // Get rid of unused warning
-        #[cfg(not(feature = "samd21"))]
+        #[cfg(not(any(feature = "samd20", feature = "samd21")))]
         let _ = nvmctrl;
 
         enable_gclk_apb(pm);
@@ -494,7 +494,7 @@ fn set_flash_to_half_auto_wait_state(nvmctrl: &mut NVMCTRL) {
 }
 
 /// Prevent automatic writes to flash by pointers to flash area
-#[cfg(feature = "samd21")]
+#[cfg(any(feature = "samd20", feature = "samd21"))]
 fn set_flash_manual_write(nvmctrl: &mut NVMCTRL) {
     nvmctrl.ctrlb.modify(|_, w| w.manw().set_bit());
 }
@@ -617,7 +617,7 @@ fn configure_and_enable_dfll48m(sysctrl: &mut SYSCTRL, use_external_crystal: boo
     // and finally enable it!
     sysctrl.dfllctrl.modify(|_, w| w.enable().set_bit());
 
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     if use_external_crystal {
         // wait for lock
         while sysctrl.pclksr.read().dflllckc().bit_is_clear()
