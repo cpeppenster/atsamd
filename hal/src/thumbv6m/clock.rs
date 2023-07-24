@@ -17,6 +17,9 @@ pub type ClockId = pac::gclk::clkctrl::ID_A;
 pub type ClockGenId = pac::gclk::clkctrl::GEN_A;
 pub type ClockSource = pac::gclk::genctrl::SRC_A;
 
+#[cfg(feature = "samd20")]
+type DFLL48 = DFLL48M;
+
 /// Represents a configured clock generator.
 /// Can be converted into the effective clock frequency.
 /// Its primary purpose is to be passed in to methods
