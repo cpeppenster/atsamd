@@ -268,7 +268,14 @@ pub use pads::*;
 mod reg;
 use reg::Registers;
 
+#[cfg(feature = "samd20")]
+#[path = "i2c/flags_samd20.rs"]
 mod flags;
+
+#[cfg(not(feature = "samd20"))]
+#[path = "i2c/flags.rs"]
+mod flags;
+
 pub use flags::*;
 
 mod config;

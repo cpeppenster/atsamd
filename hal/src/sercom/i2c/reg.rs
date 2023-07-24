@@ -44,6 +44,15 @@ impl<S: Sercom> Registers<S> {
 
     /// Reset the SERCOM peripheral
     #[inline]
+    #[cfg(feature = "samd20")]
+    pub(super) fn swrst(&mut self) {
+        self.i2c_master().ctrla.write(|w| w.swrst().set_bit());
+        while self.i2c_master().read_status().syncbusy() {}
+    }
+
+    /// Reset the SERCOM peripheral
+    #[inline]
+    #[cfg(not(feature = "samd20"))]
     pub(super) fn swrst(&mut self) {
         self.i2c_master().ctrla.write(|w| w.swrst().set_bit());
         while self.i2c_master().syncbusy.read().swrst().bit_is_set() {}
@@ -71,7 +80,7 @@ impl<S: Sercom> Registers<S> {
     /// Get the contents of the `BAUD` register.
     #[inline]
     pub(super) fn get_baud(&self) -> u32 {
-        self.i2c_master().baud.read().bits()
+        self.i2c_master().baud.read().bits().into()
     }
 
     /// Set SCL Low Time-Out
@@ -82,6 +91,22 @@ impl<S: Sercom> Registers<S> {
     /// as normal, but the clock hold will be released. The STATUS.LOWTOUT and
     /// STATUS.BUSERR status bits will be set.
     #[inline]
+    #[cfg(feature = "samd20")]
+    pub(super) fn set_low_timeout(&mut self, set: bool) {
+        self.i2c_master()
+            .ctrla
+            .modify(|_, w| w.lowtout().bit(set));
+    }
+
+    /// Set SCL Low Time-Out
+    ///
+    /// If SCL is held low for 25ms-35ms, the master will release its clock
+    /// hold, if enabled, and complete the current transaction. A stop condition
+    /// will automatically be transmitted. INTFLAG.SB or INTFLAG.MB will be set
+    /// as normal, but the clock hold will be released. The STATUS.LOWTOUT and
+    /// STATUS.BUSERR status bits will be set.
+    #[inline]
+    #[cfg(not(feature = "samd20"))]
     pub(super) fn set_low_timeout(&mut self, set: bool) {
         self.i2c_master()
             .ctrla
@@ -96,6 +121,20 @@ impl<S: Sercom> Registers<S> {
     /// as normal, but the clock hold will be released. The STATUS.LOWTOUT and
     /// STATUS.BUSERR status bits will be set.
     #[inline]
+    #[cfg(feature = "samd20")]
+    pub(super) fn get_low_timeout(&mut self) -> bool {
+        self.i2c_master().ctrla.read().lowtout().bit()
+    }
+
+    /// Get SCL Low Time-Out
+    ///
+    /// If SCL is held low for 25ms-35ms, the master will release its clock
+    /// hold, if enabled, and complete the current transaction. A stop condition
+    /// will automatically be transmitted. INTFLAG.SB or INTFLAG.MB will be set
+    /// as normal, but the clock hold will be released. The STATUS.LOWTOUT and
+    /// STATUS.BUSERR status bits will be set.
+    #[inline]
+    #[cfg(not(feature = "samd20"))]
     pub(super) fn get_low_timeout(&mut self) -> bool {
         self.i2c_master().ctrla.read().lowtouten().bit()
     }
@@ -244,6 +283,9 @@ impl<S: Sercom> Registers<S> {
 
         self.check_bus_status()?;
 
+        #[cfg(feature = "samd20")]
+        self.i2c_master().clear_status(Status::clear_error_flags());
+        #[cfg(not(feature = "samd20"))]
         self.i2c_master()
             .intflag
             .modify(|_, w| w.error().clear_bit());
@@ -348,6 +390,26 @@ impl<S: Sercom> Registers<S> {
     }
 
     #[inline]
+    #[cfg(feature = "samd20")]
+    pub(super) fn send_bytes(&mut self, bytes: &[u8]) -> Result<(), Error> {
+        for b in bytes {
+            unsafe {
+                self.i2c_master().data.write(|w| w.bits(*b));
+            }
+
+            loop {
+                let intflag = self.i2c_master().intflag.read();
+                if intflag.mb().bit_is_set() {
+                    break;
+                }
+            }
+            self.read_status().check_bus_error()?;
+        }
+        Ok(())
+    }
+
+    #[inline]
+    #[cfg(not(feature = "samd20"))]
     pub(super) fn send_bytes(&mut self, bytes: &[u8]) -> Result<(), Error> {
         for b in bytes {
             unsafe {
@@ -433,6 +495,13 @@ impl<S: Sercom> Registers<S> {
     }
 
     #[inline]
+    #[cfg(feature = "samd20")]
+    fn sync_sysop(&mut self) {
+        while self.read_status().syncbusy() {}
+    }
+
+    #[inline]
+    #[cfg(not(feature = "samd20"))]
     fn sync_sysop(&mut self) {
         while self.i2c_master().syncbusy.read().sysop().bit_is_set() {}
     }
@@ -456,6 +525,18 @@ impl<S: Sercom> Registers<S> {
     /// Enable or disable the SERCOM peripheral, and wait for the ENABLE bit to
     /// synchronize.
     #[inline]
+    #[cfg(feature = "samd20")]
+    pub(super) fn enable_peripheral(&mut self, enable: bool) {
+        self.i2c_master()
+            .ctrla
+            .modify(|_, w| w.enable().bit(enable));
+        while self.read_status().syncbusy() {}
+    }
+
+    /// Enable or disable the SERCOM peripheral, and wait for the ENABLE bit to
+    /// synchronize.
+    #[inline]
+    #[cfg(not(feature = "samd20"))]
     pub(super) fn enable_peripheral(&mut self, enable: bool) {
         self.i2c_master()
             .ctrla
@@ -464,10 +545,22 @@ impl<S: Sercom> Registers<S> {
     }
 }
 
+#[cfg(feature = "samd20")]
+fn encode_write_address(addr_7_bits: u8) -> u8 {
+    (addr_7_bits as u16) << 1
+}
+
+#[cfg(not(feature = "samd20"))]
 fn encode_write_address(addr_7_bits: u8) -> u16 {
     (addr_7_bits as u16) << 1
 }
 
+#[cfg(feature = "samd20")]
+fn encode_read_address(addr_7_bits: u8) -> u8 {
+    (addr_7_bits as u16) << 1 | 1
+}
+
+#[cfg(not(feature = "samd20"))]
 fn encode_read_address(addr_7_bits: u8) -> u16 {
     (addr_7_bits as u16) << 1 | 1
 }
