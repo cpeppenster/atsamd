@@ -27,6 +27,7 @@ macro_rules! define_pac {
 define_pac!(
     (atsamd11c, "atsamd11c"),
     (atsamd11d, "atsamd11d"),
+    (atsamd20e, "atsamd20e"),
     (atsamd21e, "atsamd21e"),
     (atsamd21g, "atsamd21g"),
     (atsamd21j, "atsamd21j"),
