@@ -610,16 +610,16 @@ fn configure_and_enable_dfll48m(sysctrl: &mut SYSCTRL, use_external_crystal: boo
             // closed loop mode
             w.mode().set_bit();
 
-            // chill cycle disable
-            w.ccdis().set_bit();
-
             // usb correction
             #[cfg(not(feature = "samd20"))]
             w.usbcrm().set_bit();
 
             // bypass coarse lock (have calibration data)
             #[cfg(not(feature = "samd20"))]
-            w.bplckc().set_bit()
+            w.bplckc().set_bit();
+
+            // chill cycle disable
+            w.ccdis().set_bit();
         });
     }
 
