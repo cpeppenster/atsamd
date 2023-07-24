@@ -72,6 +72,8 @@ defmt = {version = "0.3.4", optional = true}
 atsamd11c = {version = "0.12.0", path = "../pac/atsamd11c", optional = true}
 atsamd11d = {version = "0.12.0", path = "../pac/atsamd11d", optional = true}
 
+atsamd20e = {version = "0.1.0", path = "../pac/atsamd20e", optional = true}
+
 atsamd21e = {version = "0.12.0", path = "../pac/atsamd21e", optional = true}
 atsamd21g = {version = "0.12.0", path = "../pac/atsamd21g", optional = true}
 atsamd21j = {version = "0.12.0", path = "../pac/atsamd21j", optional = true}
@@ -110,6 +112,8 @@ atsame54p = {version = "0.12.0", path = "../pac/atsame54p", optional = true}
 samd11c = ["samd11", "atsamd11c", "periph-d11c", "pins-d11c"]
 samd11d = ["samd11", "atsamd11d", "periph-d11d", "pins-d11d"]
 
+samd20e = ["samd20", "atsamd20e", "periph-d20e", "pins-d20e"]
+
 samd21e = ["samd21", "atsamd21e", "periph-d21e", "pins-d21e"]
 samd21g = ["samd21", "atsamd21g", "periph-d21g", "pins-d21g"]
 samd21j = ["samd21", "atsamd21j", "periph-d21j", "pins-d21j"]
@@ -141,6 +145,8 @@ same54p = ["same54", "atsame54p", "periph-e54p", "pins-e54p"]
 
 samd11c-rt = ["samd11c", "atsamd11c/rt"]
 samd11d-rt = ["samd11d", "atsamd11d/rt"]
+
+samd20e-rt = ["samd20e", "atsamd20e/rt"]
 
 samd21e-rt = ["samd21e", "atsamd21e/rt"]
 samd21g-rt = ["samd21g", "atsamd21g/rt"]
@@ -213,6 +219,7 @@ thumbv7 = ["device"]
 
 # Map each series of chips to its instruction set
 samd11 = ["thumbv6"]
+samd20 = ["thumbv6"]
 samd21 = ["thumbv6"]
 samd51 = ["thumbv7"]
 same51 = ["thumbv7"]
@@ -260,6 +267,8 @@ pins-128 = ["pins-100"]
 # Map each variant to its corresponding set of pins
 pins-d11c = ["pins-14", "has-pa28"]
 pins-d11d = ["pins-24", "has-pa28", "has-pa27"]
+
+pins-d20e = ["pins-32a", "has-pa28"]
 
 pins-d21e = ["pins-32a", "has-pa28"]
 pins-d21g = ["pins-48a", "has-pa28"]
@@ -319,6 +328,20 @@ has-usb = []
 # Map each variant to its collection of peripherals
 periph-d11c = ["has-sercom0", "has-sercom1", "has-tc1", "has-tc2", "has-tcc0"]
 periph-d11d = ["periph-d11c", "has-sercom2"]
+
+periph-d20 = [
+  "has-i2s",
+  "has-sercom0",
+  "has-sercom1",
+  "has-sercom2",
+  "has-sercom3",
+  "has-tc3",
+  "has-tc4",
+  "has-tc5",
+  "has-tcc0",
+  "has-tcc1",
+  "has-tcc2",
+]
 
 periph-d21 = [
   "has-i2s",
