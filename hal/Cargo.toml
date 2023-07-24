@@ -338,9 +338,6 @@ periph-d20 = [
   "has-tc3",
   "has-tc4",
   "has-tc5",
-  "has-tcc0",
-  "has-tcc1",
-  "has-tcc2",
 ]
 
 periph-d20e = ["periph-d20"]
