@@ -53,11 +53,15 @@ pub mod pad;
 pub use pad::*;
 
 pub mod i2c;
+
+#[cfg(not(feature = "samd20"))] // TODO: Add SAMD 20 support
 pub mod spi;
+#[cfg(not(feature = "samd20"))] // TODO: Add SAMD 20 support
 pub mod spi_future;
+#[cfg(not(feature = "samd20"))] // TODO: Add SAMD 20 support
 pub mod uart;
 
-#[cfg(feature = "dma")]
+#[cfg(all(feature = "dma", not(feature = "samd20")))]
 pub mod dma;
 
 //==============================================================================

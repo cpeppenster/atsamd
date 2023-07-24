@@ -50,13 +50,13 @@ impl<S: Sercom> Registers<S> {
 
     #[inline]
     #[cfg(feature = "samd20")]
-    pub(super) fn wait_for_sync(_sync_bit: SyncBit) {
+    pub(super) fn wait_for_sync(&self, _sync_bit: SyncBit) {
         while self.read_status().syncbusy() {}
     }
 
     #[inline]
     #[cfg(not(feature = "samd20"))]
-    pub(super) fn wait_for_sync(sync_bit: SyncBit) {
+    pub(super) fn wait_for_sync(&self, sync_bit: SyncBit) {
         while match sync_bit {
             SyncBit::Enable => self.i2c_master().syncbusy.read().enable().bit_is_set(),
             SyncBit::SwRst => self.i2c_master().syncbusy.read().swrst().bit_is_set(),
@@ -523,7 +523,6 @@ impl<S: Sercom> Registers<S> {
     /// Enable or disable the SERCOM peripheral, and wait for the ENABLE bit to
     /// synchronize.
     #[inline]
-    #[cfg(not(feature = "samd20"))]
     pub(super) fn enable_peripheral(&mut self, enable: bool) {
         self.i2c_master()
             .ctrla

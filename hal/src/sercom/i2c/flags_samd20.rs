@@ -69,9 +69,9 @@ impl Status {
 
     pub fn clear_error_flags() -> Self {
         Status::new()
-            .with_buserr(1)
-            .with_arblost(1)
-            .with_rxnack(1)
+            .with_buserr(true)
+            .with_arblost(true)
+            .with_rxnack(true)
     }
 }
 
