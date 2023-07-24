@@ -343,6 +343,8 @@ periph-d20 = [
   "has-tcc2",
 ]
 
+periph-d20e = ["periph-d20"]
+
 periph-d21 = [
   "has-i2s",
   "has-sercom0",
