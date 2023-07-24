@@ -247,7 +247,9 @@ impl GenericClockController {
 
         // Reset various dividers back to 1
         sysctrl.osc8m.modify(|_, w| {
-            w.presc()._0();
+            unsafe {
+                w.presc().set_bits(0);
+            }
             w.ondemand().clear_bit()
         });
         pm.cpusel.write(|w| w.cpudiv().div1());
