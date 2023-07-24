@@ -341,7 +341,7 @@ macro_rules! alternate {
 
 alternate!(B, C, D, E, F, G);
 
-#[cfg(any(feature = "samd21", feature = "thumbv7"))]
+#[cfg(any(feature = "samd20", feature = "samd21", feature = "thumbv7"))]
 alternate!(H);
 
 #[cfg(feature = "thumbv7")]
@@ -749,7 +749,7 @@ impl_core_convert_from!(
     AlternateE,
     AlternateF,
     AlternateG,
-    #[cfg(any(feature = "samd21", feature = "thumbv7"))]
+    #[cfg(any(feature = "samd20", feature = "samd21", feature = "thumbv7"))]
     AlternateH,
     #[cfg(feature = "thumbv7")]
     AlternateI,

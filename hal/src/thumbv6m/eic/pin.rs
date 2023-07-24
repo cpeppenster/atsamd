@@ -248,7 +248,7 @@ mod impls {
 
 // SAMD21
 
-#[cfg(feature = "samd21")]
+#[cfg(any(feature = "samd20", feature = "samd21"))]
 mod impls {
     use super::*;
 

@@ -5,7 +5,7 @@
 
 use core::marker::PhantomData;
 
-#[cfg(feature = "samd21")]
+#[cfg(any(feature = "samd20", feature = "samd21"))]
 use crate::gpio::AnyPin;
 use crate::sercom::*;
 use crate::typelevel::{NoneT, Sealed};

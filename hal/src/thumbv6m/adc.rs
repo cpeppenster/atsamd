@@ -195,7 +195,7 @@ adc_pins! {
     PA11: 9
 }
 
-#[cfg(feature = "samd21")]
+#[cfg(any(feature = "samd20", feature = "samd21"))]
 adc_pins! {
     PA02: 0,
     PA03: 1,

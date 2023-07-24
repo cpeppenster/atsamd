@@ -42,7 +42,7 @@ macro_rules! pad_info {
             type PinMode = Alternate<$Cfg>;
         }
 
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         impl GetPad<$Sercom> for $PinId {
             type PadNum = $PadNum;
             type PinMode = Alternate<$Cfg>;
