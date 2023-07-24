@@ -132,11 +132,11 @@ pad_table!(
         C: (Sercom0, Pad3),
         D: (Sercom0, Pad1),
     }
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     PA06 {
         D: (Sercom0, Pad2),
     }
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     PA07 {
         D: (Sercom0, Pad3),
     }
@@ -145,9 +145,9 @@ pad_table!(
         C: (Sercom1, Pad2),
         #[cfg(feature = "samd11")]
         D: (Sercom0, Pad2),
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         C: (Sercom0, Pad0) + I2C,
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         D: (Sercom2, Pad0) + I2C,
     }
     PA09 {
@@ -155,17 +155,17 @@ pad_table!(
         C: (Sercom1, Pad3),
         #[cfg(feature = "samd11")]
         D: (Sercom0, Pad3),
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         C: (Sercom0, Pad1) + I2C,
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         D: (Sercom2, Pad1) + I2C,
     }
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     PA10 {
         C: (Sercom0, Pad2),
         D: (Sercom2, Pad2),
     }
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     PA11 {
         C: (Sercom0, Pad3),
         D: (Sercom2, Pad3),
@@ -183,7 +183,7 @@ pad_table!(
     PA14 {
         #[cfg(feature = "samd11")]
         C: (Sercom0, Pad0) + I2C,
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         C: (Sercom2, Pad2),
         #[cfg(feature = "has-sercom4")]
         D: (Sercom4, Pad2),
@@ -191,27 +191,27 @@ pad_table!(
     PA15 {
         #[cfg(feature = "samd11")]
         C: (Sercom0, Pad1) + I2C,
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         C: (Sercom2, Pad3),
         #[cfg(feature = "has-sercom4")]
         D: (Sercom4, Pad3),
     }
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     PA16 {
         C: (Sercom1, Pad0) + I2C,
         D: (Sercom3, Pad0) + I2C,
     }
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     PA17 {
         C: (Sercom1, Pad1) + I2C,
         D: (Sercom3, Pad1) + I2C,
     }
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     PA18 {
         C: (Sercom1, Pad2),
         D: (Sercom3, Pad2),
     }
-    #[cfg(feature = "samd21")]
+    #[cfg(any(feature = "samd20", feature = "samd21"))]
     PA19 {
         C: (Sercom1, Pad3),
         D: (Sercom3, Pad3),
@@ -227,13 +227,13 @@ pad_table!(
         D: (Sercom3, Pad3),
     }
     PA22 {
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         C: (Sercom3, Pad0) + I2C,
         #[cfg(feature = "has-sercom5")]
         D: (Sercom5, Pad0) + I2C,
     }
     PA23 {
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         C: (Sercom3, Pad1) + I2C,
         #[cfg(feature = "has-sercom5")]
         D: (Sercom5, Pad1) + I2C,
@@ -241,7 +241,7 @@ pad_table!(
     PA24 {
         #[cfg(feature = "samd11")]
         C: (Sercom1, Pad2),
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         C: (Sercom3, Pad2),
         #[cfg(feature = "has-sercom5")]
         D: (Sercom5, Pad2),
@@ -249,7 +249,7 @@ pad_table!(
     PA25 {
         #[cfg(feature = "samd11")]
         C: (Sercom1, Pad3),
-        #[cfg(feature = "samd21")]
+        #[cfg(any(feature = "samd20", feature = "samd21"))]
         C: (Sercom3, Pad3),
         #[cfg(feature = "has-sercom5")]
         D: (Sercom5, Pad3),

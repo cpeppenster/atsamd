@@ -418,6 +418,33 @@ clock_generator!(
     (ac_dig, AcDigClock, AC_DIG),
     (dac, DacClock, DAC),
 );
+// samd20
+#[cfg(feature = "samd20")]
+clock_generator!(
+    (tc0_tc1, Tc0Tc1Clock, TC0_TC1),
+    (tc2_tc3, Tc2Tc3Clock, TC2_TC3),
+    (tc4, Tc4Clock, TC4),
+    (sercom0_core, Sercom0CoreClock, SERCOM0_CORE),
+    (sercom1_core, Sercom1CoreClock, SERCOM1_CORE),
+    (sercom2_core, Sercom2CoreClock, SERCOM2_CORE),
+    (sercom3_core, Sercom3CoreClock, SERCOM3_CORE),
+    (usb, UsbClock, USB),
+    (rtc, RtcClock, RTC),
+    (adc, AdcClock, ADC),
+    (wdt, WdtClock, WDT),
+    (eic, EicClock, EIC),
+    (evsys0, Evsys0Clock, EVSYS_0),
+    (evsys1, Evsys1Clock, EVSYS_1),
+    (evsys2, Evsys2Clock, EVSYS_2),
+    (evsys3, Evsys3Clock, EVSYS_3),
+    (evsys4, Evsys4Clock, EVSYS_4),
+    (evsys5, Evsys5Clock, EVSYS_5),
+    (evsys6, Evsys6Clock, EVSYS_6),
+    (evsys7, Evsys7Clock, EVSYS_7),
+    (ac_ana, AcAnaClock, AC_ANA),
+    (ac_dig, AcDigClock, AC_DIG),
+    (dac, DacClock, DAC),
+);
 // samd21
 #[cfg(feature = "samd21")]
 clock_generator!(

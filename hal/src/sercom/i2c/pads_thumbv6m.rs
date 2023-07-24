@@ -136,7 +136,7 @@ pub type PadsFromIds<S, SDA, SCL> = Pads<S, Pad<S, Pad0, SDA>, Pad<S, Pad1, SCL>
 ///
 /// [`Pin`]: crate::gpio::Pin
 /// [`PinId`]: crate::gpio::PinId
-#[cfg(feature = "samd21")]
+#[cfg(any(feature = "samd20", feature = "samd21"))]
 pub type PadsFromIds<S, SDA, SCL> = Pads<S, Pad<S, SDA>, Pad<S, SCL>>;
 
 //=============================================================================

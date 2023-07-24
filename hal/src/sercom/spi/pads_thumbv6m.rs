@@ -404,7 +404,7 @@ where
 /// [`Pin`]: crate::gpio::Pin
 /// [`PinId`]: crate::gpio::PinId
 /// [`OptionalPinId`]: crate::gpio::OptionalPinId
-#[cfg(feature = "samd21")]
+#[cfg(any(feature = "samd20", feature = "samd21"))]
 pub type PadsFromIds<S, DI = NoneT, DO = NoneT, CK = NoneT, SS = NoneT> = Pads<
     S,
     <DI as GetOptionalPad<S>>::Pad,

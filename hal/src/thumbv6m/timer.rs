@@ -3,6 +3,8 @@ use crate::ehal::timer::{CountDown, Periodic};
 use crate::pac::PM;
 #[cfg(feature = "samd11")]
 use crate::pac::{tc1::COUNT16, TC1};
+#[cfg(feature = "samd20")]
+use crate::pac::{tc2::COUNT16, TC2, TC3, TC4};
 #[cfg(feature = "samd21")]
 use crate::pac::{tc3::COUNT16, TC3, TC4, TC5};
 use crate::timer_params::TimerParams;
@@ -172,6 +174,13 @@ impl TimerCounter<$TC>
 #[cfg(feature = "samd11")]
 tc! {
     TimerCounter1: (TC1, tc1_, Tc1Tc2Clock),
+}
+// samd20
+#[cfg(feature = "samd20")]
+tc! {
+    TimerCounter2: (TC2, tc2_, Tc2Tc3Clock),
+    TimerCounter3: (TC3, tc3_, Tc2Tc3Clock),
+    TimerCounter4: (TC4, tc4_, Tc4Clock),
 }
 // samd21
 #[cfg(feature = "samd21")]
