@@ -8,7 +8,7 @@
 use fugit::RateExtU32;
 
 use crate::pac::gclk::clkctrl::GEN_A::*;
-use crate::pac::gclk::clkctrl::ID_A::*;
+use crate::pac::gclk::clkctrl::ID_A;
 use crate::pac::gclk::genctrl::SRC_A::*;
 use crate::pac::{self, GCLK, NVMCTRL, PM, SYSCTRL};
 use crate::time::Hertz;
@@ -18,7 +18,9 @@ pub type ClockGenId = pac::gclk::clkctrl::GEN_A;
 pub type ClockSource = pac::gclk::genctrl::SRC_A;
 
 #[cfg(feature = "samd20")]
-type DFLL48 = DFLL48M;
+const ID_DFLL48: ID_A = ID_A::DFLL48M;
+#[cfg(not(feature = "samd20"))]
+const ID_DFLL48: ID_A = ID_A::DFLL48;
 
 /// Represents a configured clock generator.
 /// Can be converted into the effective clock frequency.
@@ -185,7 +187,7 @@ impl GenericClockController {
         }
 
         // Feed 32khz into the DFLL48
-        state.enable_clock_generator(DFLL48, GCLK1);
+        state.enable_clock_generator(ID_DFLL48, GCLK1);
         // Enable the DFLL48
         configure_and_enable_dfll48m(sysctrl, use_external_crystal);
         // Feed DFLL48 into the main clock
@@ -214,7 +216,7 @@ impl GenericClockController {
                 0.Hz(),
                 0.Hz(),
             ],
-            used_clocks: 1u64 << u8::from(ClockId::DFLL48),
+            used_clocks: 1u64 << u8::from(ID_DFLL48),
         }
     }
 

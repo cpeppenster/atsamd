@@ -13,7 +13,7 @@ pub mod timer;
 #[cfg(feature = "unproven")]
 pub mod adc;
 
-#[cfg(and(feature = "unproven", not(feature = "samd20")))]
+#[cfg(all(feature = "unproven", not(feature = "samd20")))]
 pub mod pwm;
 
 #[cfg(feature = "unproven")]
