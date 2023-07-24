@@ -47,7 +47,7 @@ impl<S: Sercom> Registers<S> {
     #[cfg(feature = "samd20")]
     pub(super) fn swrst(&mut self) {
         self.i2c_master().ctrla.write(|w| w.swrst().set_bit());
-        while self.i2c_master().read_status().syncbusy() {}
+        while self.read_status().syncbusy() {}
     }
 
     /// Reset the SERCOM peripheral
@@ -284,7 +284,7 @@ impl<S: Sercom> Registers<S> {
         self.check_bus_status()?;
 
         #[cfg(feature = "samd20")]
-        self.i2c_master().clear_status(Status::clear_error_flags());
+        self.clear_status(Status::clear_error_flags());
         #[cfg(not(feature = "samd20"))]
         self.i2c_master()
             .intflag
