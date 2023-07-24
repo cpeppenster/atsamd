@@ -619,7 +619,7 @@ fn configure_and_enable_dfll48m(sysctrl: &mut SYSCTRL, use_external_crystal: boo
             w.bplckc().set_bit();
 
             // chill cycle disable
-            w.ccdis().set_bit();
+            w.ccdis().set_bit()
         });
     }
 
