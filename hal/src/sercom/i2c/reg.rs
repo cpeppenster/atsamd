@@ -18,6 +18,12 @@ pub(super) struct Registers<S: Sercom> {
 // interior mutability of the PAC SERCOM struct.
 unsafe impl<S: Sercom> Sync for Registers<S> {}
 
+pub(super) enum SyncBit {
+    Enable,
+    SwRst,
+    SysOp,
+}
+
 impl<S: Sercom> Registers<S> {
     /// Create a new `Registers` instance
     #[inline]
@@ -42,20 +48,27 @@ impl<S: Sercom> Registers<S> {
         self.sercom
     }
 
-    /// Reset the SERCOM peripheral
     #[inline]
     #[cfg(feature = "samd20")]
-    pub(super) fn swrst(&mut self) {
-        self.i2c_master().ctrla.write(|w| w.swrst().set_bit());
+    pub(super) fn wait_for_sync(_sync_bit: SyncBit) {
         while self.read_status().syncbusy() {}
+    }
+
+    #[inline]
+    #[cfg(not(feature = "samd20"))]
+    pub(super) fn wait_for_sync(sync_bit: SyncBit) {
+        while match sync_bit {
+            SyncBit::Enable => self.i2c_master().syncbusy.read().enable().bit_is_set(),
+            SyncBit::SwRst => self.i2c_master().syncbusy.read().swrst().bit_is_set(),
+            SyncBit::SysOp => self.i2c_master().syncbusy.read().sysop().bit_is_set(),
+        } {}
     }
 
     /// Reset the SERCOM peripheral
     #[inline]
-    #[cfg(not(feature = "samd20"))]
     pub(super) fn swrst(&mut self) {
         self.i2c_master().ctrla.write(|w| w.swrst().set_bit());
-        while self.i2c_master().syncbusy.read().swrst().bit_is_set() {}
+        self.wait_for_sync(SyncBit::SwRst);
     }
 
     /// Configure the SERCOM to use I2C master mode
@@ -236,6 +249,18 @@ impl<S: Sercom> Registers<S> {
         self.i2c_master().status.read().bits().into()
     }
 
+    #[inline]
+    #[cfg(feature = "samd20")]
+    pub(super) fn check_bus_error(&self) -> bool {
+        self.read_status().check_bus_error().is_err()
+    }
+
+    #[inline]
+    #[cfg(not(feature = "samd20"))]
+    pub(super) fn check_bus_error(&self) -> bool {
+        self.read_flags().error()
+    }
+
     pub(super) fn check_bus_status(&self) -> Result<(), Error> {
         let status = self.read_status();
         if status.busstate() == BusState::Busy
@@ -305,7 +330,7 @@ impl<S: Sercom> Registers<S> {
             if intflag.mb().bit_is_set() {
                 return Err(Error::ArbitrationLost);
             }
-            if intflag.sb().bit_is_set() || intflag.error().bit_is_set() {
+            if intflag.sb().bit_is_set() || self.check_bus_error() {
                 break;
             }
         }
@@ -390,7 +415,6 @@ impl<S: Sercom> Registers<S> {
     }
 
     #[inline]
-    #[cfg(feature = "samd20")]
     pub(super) fn send_bytes(&mut self, bytes: &[u8]) -> Result<(), Error> {
         for b in bytes {
             unsafe {
@@ -399,26 +423,7 @@ impl<S: Sercom> Registers<S> {
 
             loop {
                 let intflag = self.i2c_master().intflag.read();
-                if intflag.mb().bit_is_set() {
-                    break;
-                }
-            }
-            self.read_status().check_bus_error()?;
-        }
-        Ok(())
-    }
-
-    #[inline]
-    #[cfg(not(feature = "samd20"))]
-    pub(super) fn send_bytes(&mut self, bytes: &[u8]) -> Result<(), Error> {
-        for b in bytes {
-            unsafe {
-                self.i2c_master().data.write(|w| w.bits(*b));
-            }
-
-            loop {
-                let intflag = self.i2c_master().intflag.read();
-                if intflag.mb().bit_is_set() || intflag.error().bit_is_set() {
+                if intflag.mb().bit_is_set() || self.check_bus_error() {
                     break;
                 }
             }
@@ -495,15 +500,8 @@ impl<S: Sercom> Registers<S> {
     }
 
     #[inline]
-    #[cfg(feature = "samd20")]
     fn sync_sysop(&mut self) {
-        while self.read_status().syncbusy() {}
-    }
-
-    #[inline]
-    #[cfg(not(feature = "samd20"))]
-    fn sync_sysop(&mut self) {
-        while self.i2c_master().syncbusy.read().sysop().bit_is_set() {}
+        self.wait_for_sync(SyncBit::SysOp)
     }
 
     /// Enable the I2C peripheral
@@ -525,29 +523,18 @@ impl<S: Sercom> Registers<S> {
     /// Enable or disable the SERCOM peripheral, and wait for the ENABLE bit to
     /// synchronize.
     #[inline]
-    #[cfg(feature = "samd20")]
-    pub(super) fn enable_peripheral(&mut self, enable: bool) {
-        self.i2c_master()
-            .ctrla
-            .modify(|_, w| w.enable().bit(enable));
-        while self.read_status().syncbusy() {}
-    }
-
-    /// Enable or disable the SERCOM peripheral, and wait for the ENABLE bit to
-    /// synchronize.
-    #[inline]
     #[cfg(not(feature = "samd20"))]
     pub(super) fn enable_peripheral(&mut self, enable: bool) {
         self.i2c_master()
             .ctrla
             .modify(|_, w| w.enable().bit(enable));
-        while self.i2c_master().syncbusy.read().enable().bit_is_set() {}
+        self.wait_for_sync(SyncBit::Enable)
     }
 }
 
 #[cfg(feature = "samd20")]
 fn encode_write_address(addr_7_bits: u8) -> u8 {
-    (addr_7_bits as u16) << 1
+    addr_7_bits << 1
 }
 
 #[cfg(not(feature = "samd20"))]
@@ -557,7 +544,7 @@ fn encode_write_address(addr_7_bits: u8) -> u16 {
 
 #[cfg(feature = "samd20")]
 fn encode_read_address(addr_7_bits: u8) -> u8 {
-    (addr_7_bits as u16) << 1 | 1
+    addr_7_bits << 1 | 1
 }
 
 #[cfg(not(feature = "samd20"))]
