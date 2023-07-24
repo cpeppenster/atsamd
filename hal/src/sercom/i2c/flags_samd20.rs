@@ -43,6 +43,7 @@ pub struct Status {
     pub rxnack: bool,
     #[skip]
     _reserved: B1,
+    #[skip(setters)]
     pub busstate: BusState,
     pub lowtout: bool,
     #[skip(setters)]
@@ -71,7 +72,6 @@ impl Status {
         Status::new()
             .with_buserr(true)
             .with_arblost(true)
-            .with_rxnack(true)
     }
 }
 
