@@ -58,7 +58,6 @@ pub mod i2c;
 pub mod spi;
 #[cfg(not(feature = "samd20"))] // TODO: Add SAMD 20 support
 pub mod spi_future;
-#[cfg(not(feature = "samd20"))] // TODO: Add SAMD 20 support
 pub mod uart;
 
 #[cfg(all(feature = "dma", not(feature = "samd20")))]
