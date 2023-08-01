@@ -310,6 +310,9 @@ impl<S: Sercom> Registers<S> {
     #[inline]
     #[cfg(feature = "samd20")]
     pub(super) fn get_baud(&self) -> (u16, BaudMode) {
+        use BaudMode::*;
+        use Oversampling::*;
+
         let baud = self.usart().baud.read().baud().bits();
         let mode = Arithmetic(Bits0);
 
