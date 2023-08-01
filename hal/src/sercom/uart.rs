@@ -403,7 +403,14 @@ use reg::Registers;
 mod charsize;
 pub use charsize::*;
 
+#[cfg(feature = "samd20")]
+#[path = "i2c/flags_samd20.rs"]
 mod flags;
+
+#[cfg(not(feature = "samd20"))]
+#[path = "i2c/flags.rs"]
+mod flags;
+
 pub use flags::*;
 
 mod config;
