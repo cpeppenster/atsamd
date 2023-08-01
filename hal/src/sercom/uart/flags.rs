@@ -71,6 +71,13 @@ bitflags! {
     }
 }
 
+impl Status {
+    #[inline]
+    pub fn get_clear_error_flags() -> Status {
+        Status::BUFOVF | Status::FERR | Status::PERR | Status::ISF | Status::COLL
+    }
+}
+
 //=============================================================================
 // Error
 //=============================================================================

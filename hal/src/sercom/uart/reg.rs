@@ -64,7 +64,7 @@ impl<S: Sercom> Registers<S> {
     #[inline]
     #[cfg(feature = "samd20")]
     pub(super) fn wait_for_sync(&self, _sync_bit: SyncBit) {
-        while self.read_status().syncbusy() {}
+        while self.read_status().contains(Status::SYNCBUSY) {}
     }
 
     #[inline]
@@ -95,10 +95,10 @@ impl<S: Sercom> Registers<S> {
     /// Configure the `SERCOM`'s Pads according to RXPO and TXPO
     #[inline]
     #[cfg(feature = "samd20")]
-    pub(super) fn configure_pads(&mut self, rxpo: u8, txpo: bool) {
+    pub(super) fn configure_pads(&mut self, rxpo: u8, txpo: u8) {
         self.usart().ctrla.modify(|_, w| unsafe {
             w.rxpo().bits(rxpo);
-            w.txpo().bit(txpo)
+            w.txpo().bit(txpo != 0)
         });
     }
 
@@ -255,7 +255,7 @@ impl<S: Sercom> Registers<S> {
         let usart = self.usart();
 
         let baud = calculate_baud_asynchronous_arithm(baud.to_Hz(), freq.to_Hz(), 1);
-        unsafe { usart.baud().write(|w| w.baud().bits(baud)) };
+        unsafe { usart.baud.write(|w| w.baud().bits(baud)) };
     }
 
     /// Set the baud rate
@@ -305,6 +305,15 @@ impl<S: Sercom> Registers<S> {
                 }
             }
         };
+    }
+
+    #[inline]
+    #[cfg(feature = "samd20")]
+    pub(super) fn get_baud(&self) -> (u16, BaudMode) {
+        let baud = self.usart().baud.read().baud().bits();
+        let mode = Arithmetic(Bits0);
+
+        (baud, mode)
     }
 
     /// Get the contents of the `BAUD` register and the current baud mode. Note

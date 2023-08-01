@@ -471,6 +471,8 @@ pub enum BitOrder {
 #[repr(u8)]
 #[derive(Debug, Clone, Copy)]
 pub enum Oversampling {
+    // No oversampling
+    Bits0 = 0,
     // 3 samples per bit
     // Bits3 = 3,
     /// 8 samples per bit
@@ -750,6 +752,7 @@ where
     }
 }
 
+#[cfg(not(feature = "samd20"))]
 impl<C, D> Uart<C, D>
 where
     C: ValidConfig,
@@ -952,7 +955,7 @@ where
 
         // Clear all errors
         self.clear_status(
-            Status::BUFOVF | Status::FERR | Status::PERR | Status::ISF | Status::COLL,
+            Status::get_clear_error_flags(),
         );
     }
 }
