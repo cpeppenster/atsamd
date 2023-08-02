@@ -98,7 +98,7 @@ impl<S: Sercom> Registers<S> {
     pub(super) fn configure_pads(&mut self, rxpo: u8, txpo: u8) {
         self.usart().ctrla.modify(|_, w| unsafe {
             w.rxpo().bits(rxpo);
-            w.txpo().bit(txpo != 0)
+            w.txpo().bit(txpo == 2 || txpo == 3)
         });
     }
 
