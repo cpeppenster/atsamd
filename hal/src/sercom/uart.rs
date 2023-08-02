@@ -750,19 +750,19 @@ where
     }
 }
 
-impl<C, D> Write for Uart<C, D>
-where
-    C: ValidConfig,
-    D: Transmit,
-{
-    fn write_str(&mut self, s: &str) -> core::fmt::Result {
-        for b in s.bytes() {
-            nb::block!(self.write(b)).unwrap();
-        }
+// impl<C, D> Write for Uart<C, D>
+// where
+//     C: ValidConfig,
+//     D: Transmit,
+// {
+//     fn write_str(&mut self, s: &str) -> core::fmt::Result {
+//         for b in s.bytes() {
+//             nb::block!(self.write(b)).unwrap();
+//         }
 
-        Ok(())
-    }
-}
+//         Ok(())
+//     }
+// }
 
 #[cfg(not(feature = "samd20"))]
 impl<C, D> Uart<C, D>
