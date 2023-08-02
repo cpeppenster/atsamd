@@ -419,7 +419,7 @@ pub use config::*;
 pub mod impl_ehal;
 
 use crate::{sercom::*, typelevel::Sealed};
-use core::{convert::TryInto, marker::PhantomData};
+use core::{convert::TryInto, fmt::Write, marker::PhantomData};
 use num_traits::AsPrimitive;
 
 /// Size of the SERCOM's `DATA` register
@@ -747,6 +747,20 @@ where
         self.config.as_mut().registers.enable_peripheral(false);
         update(self.config.as_mut());
         self.config.as_mut().registers.enable_peripheral(true);
+    }
+}
+
+impl<C, D> Write for Uart<C, D>
+where
+    C: ValidConfig,
+    D: Transmit,
+{
+    fn write_str(&mut self, s: &str) -> core::fmt::Result {
+        for b in s.bytes() {
+            nb::block!(uart.write(b)).unwrap();
+        }
+
+        Ok(())
     }
 }
 
