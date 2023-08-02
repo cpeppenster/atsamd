@@ -757,7 +757,7 @@ where
 {
     fn write_str(&mut self, s: &str) -> core::fmt::Result {
         for b in s.bytes() {
-            nb::block!(uart.write(b)).unwrap();
+            nb::block!(self.write(b)).unwrap();
         }
 
         Ok(())
