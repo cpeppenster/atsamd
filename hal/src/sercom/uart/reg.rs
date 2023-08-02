@@ -254,7 +254,7 @@ impl<S: Sercom> Registers<S> {
     pub(super) fn set_baud(&mut self, freq: Hertz, baud: Hertz, _mode: BaudMode) {
         let usart = self.usart();
 
-        let baud = calculate_baud_asynchronous_arithm(baud.to_Hz(), freq.to_Hz(), 1);
+        let baud = calculate_baud_asynchronous_arithm(baud.to_Hz(), freq.to_Hz(), Oversampling::Bits16);
         unsafe { usart.baud.write(|w| w.baud().bits(baud)) };
     }
 
@@ -314,7 +314,7 @@ impl<S: Sercom> Registers<S> {
         use Oversampling::*;
 
         let baud = self.usart().baud.read().baud().bits();
-        let mode = Arithmetic(Bits0);
+        let mode = Arithmetic(Bits16);
 
         (baud, mode)
     }

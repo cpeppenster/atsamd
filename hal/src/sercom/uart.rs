@@ -471,8 +471,6 @@ pub enum BitOrder {
 #[repr(u8)]
 #[derive(Debug, Clone, Copy)]
 pub enum Oversampling {
-    // No oversampling
-    Bits0 = 0,
     // 3 samples per bit
     // Bits3 = 3,
     /// 8 samples per bit
